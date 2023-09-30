@@ -23,13 +23,13 @@ func _process(delta):
 		var path = "res://Assets/Pieces/Chess"
 		if playerSide < 0:
 			path += "B"
-		path += type;
+		path += type
 		path += ".png"
 		$Sprite.texture = load(path)
 	else:
 		var path = "res://Assets/tiles/Chess"
-		path += type;
-		path += ".png"
+		path += type
+		path += " Tile.png"
 		$Sprite.texture = load(path)
 	pass
 
