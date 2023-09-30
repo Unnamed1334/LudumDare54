@@ -24,19 +24,21 @@ func _ready():
 	change_tile_type(0)
 
 func change_tile_type(new_type : int):
-	blank_tile.set_process(false)
-	wall_tile.set_process(false)
-	pit_tile.set_process(false)
-	ice_tile.set_process(false)
-	boarder_tile.set_process(false)
+	tile_type = new_type
+	
+	blank_tile.visible = false
+	wall_tile.visible = false
+	pit_tile.visible = false
+	ice_tile.visible = false
+	boarder_tile.visible = false
 	
 	if new_type == 0:
-		blank_tile.set_process(true)
+		blank_tile.visible = true
 	if new_type == 1:
-		wall_tile.set_process(true)
+		wall_tile.visible = true
 	if new_type == 2:
-		pit_tile.set_process(true)
+		pit_tile.visible = true
 	if new_type == 3:
-		ice_tile.set_process(true)
+		ice_tile.visible = true
 	if new_type == 4:
-		boarder_tile.set_process(true)
+		boarder_tile.visible = true

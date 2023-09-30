@@ -14,8 +14,8 @@ var selected : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# change active sprite based on piece value
-	if type not in ["Pawn","Rook","Bishop","Knight","Queen","King"]:
-		playerSide = 0
+	#if type not in ["Pawn","Rook","Bishop","Knight","Queen","King"]:
+	#	playerSide = 0
 	$Button.pressed.connect(place_moves)
 	get_node("/root/GameState").move_unit(self, pos)
 	pass # Replace with function body.
@@ -23,18 +23,18 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# update piece graphics. probably should be called only when created, but it's fine.
-	if type in ["Pawn","Rook","Bishop","Knight","Queen","King"]:
-		var path = "res://Assets/Pieces/Chess"
-		if playerSide < 0:
-			path += "B"
-		path += type
-		path += ".png"
-		$Sprite.texture = load(path)
-	else:
-		var path = "res://Assets/tiles/Chess"
-		path += type
-		path += " Tile.png"
-		$Sprite.texture = load(path)
+	#if type in ["Pawn","Rook","Bishop","Knight","Queen","King"]:
+	#	var path = "res://Assets/Pieces/Chess"
+	#	if playerSide < 0:
+	#		path += "B"
+	#	path += type
+	#	path += ".png"
+	#	$Sprite.texture = load(path)
+	#else:
+	#	var path = "res://Assets/tiles/Chess"
+	#	path += type
+	#	path += " Tile.png"
+	#	$Sprite.texture = load(path)
 	pass
 
 func select_unit():
