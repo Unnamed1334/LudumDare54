@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh4c122ljchcp"]
+[gd_scene load_steps=6 format=3 uid="uid://bh4c122ljchcp"]
 
 [ext_resource type="Script" path="res://Assets/Level/GameBoard.gd" id="1_2dgjc"]
 [ext_resource type="PackedScene" uid="uid://ccgpvhp87ulsf" path="res://Assets/Tiles/blank_tile.tscn" id="2_uhlrx"]
+[ext_resource type="PackedScene" uid="uid://iendn7axjsil" path="res://Assets/Tiles/wall_tile.tscn" id="3_c3fet"]
+[ext_resource type="PackedScene" uid="uid://c587mbierxcbj" path="res://Assets/Tiles/pit_tile.tscn" id="4_sjx0j"]
+[ext_resource type="PackedScene" uid="uid://b6tlwj8m5x77t" path="res://Assets/Tiles/ice_tile.tscn" id="5_j4p3i"]
 
 [node name="TestLevel" type="Control"]
 layout_mode = 3
@@ -18,6 +21,9 @@ theme_override_constants/v_separation = 40
 columns = 10
 script = ExtResource("1_2dgjc")
 blank_tile = ExtResource("2_uhlrx")
+wall_tile = ExtResource("3_c3fet")
+pit_tile = ExtResource("4_sjx0j")
+ice_tile = ExtResource("5_j4p3i")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
