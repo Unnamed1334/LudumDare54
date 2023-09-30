@@ -19,3 +19,10 @@ offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 texture = ExtResource("1_j5tyf")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
