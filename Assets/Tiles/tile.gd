@@ -8,7 +8,7 @@ var blank_tile : Node
 var wall_tile : Node
 var pit_tile : Node
 var ice_tile : Node
-var boarder_tile : Node
+var border_tile : Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,7 +19,7 @@ func _ready():
 	wall_tile = $Wall
 	pit_tile = $Pit
 	ice_tile = $Ice
-	boarder_tile = $Border
+	border_tile = $Border
 	
 	change_tile_type(0)
 
@@ -30,7 +30,7 @@ func change_tile_type(new_type : int):
 	wall_tile.visible = false
 	pit_tile.visible = false
 	ice_tile.visible = false
-	boarder_tile.visible = false
+	border_tile.visible = false
 	
 	if new_type == 0:
 		blank_tile.visible = true
@@ -41,4 +41,4 @@ func change_tile_type(new_type : int):
 	if new_type == 3:
 		ice_tile.visible = true
 	if new_type == 4:
-		boarder_tile.visible = true
+		border_tile.visible = true
