@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv7c6o3ly6ei1"]
+
+[ext_resource type="Script" path="res://Assets/Level/GameBoard.gd" id="1_qrc1c"]
+[ext_resource type="PackedScene" uid="uid://ccgpvhp87ulsf" path="res://Assets/Tiles/blank_tile.tscn" id="2_wve8v"]
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+theme_override_constants/h_separation = 41
+theme_override_constants/v_separation = 41
+script = ExtResource("1_qrc1c")
+blank_tile = ExtResource("2_wve8v")

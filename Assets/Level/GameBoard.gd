@@ -1,11 +1,6 @@
 extends GridContainer
 
 @export var blank_tile : PackedScene
-@export var wall_tile : PackedScene
-@export var pit_tile : PackedScene
-@export var ice_tile : PackedScene
-@export var boarder_tile : PackedScene
-
 @export var test_pawn : PackedScene
 
 # Called when the node enters the scene tree for the first time.
