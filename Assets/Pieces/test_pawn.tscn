@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://726vr3vu87rv"]
+[gd_scene load_steps=2 format=3 uid="uid://726vr3vu87rv"]
+
+[ext_resource type="Texture2D" uid="uid://bpfy3gpa51e6a" path="res://Assets/ChessPieces.png" id="1_j5tyf"]
 
 [node name="TestPawn" type="Control"]
 layout_mode = 3
@@ -10,5 +12,8 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("1_j5tyf")
