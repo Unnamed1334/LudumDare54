@@ -18,18 +18,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# update piece graphics. probably should be called only when created, but it's fine.
 	if type in ["Pawn","Rook","Bishop","Knight","Queen","King"]:
 		var path = "res://Assets/Pieces/Chess"
 		if playerSide < 0:
 			path += "B"
 		path += type;
 		path += ".png"
-		$Sprite.texture = path;
-	else
+		$Sprite.texture = load(path)
+	else:
 		var path = "res://Assets/tiles/Chess"
 		path += type;
 		path += ".png"
-		$Sprite.texture = path;
+		$Sprite.texture = load(path)
 	pass
 
 
