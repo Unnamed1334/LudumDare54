@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccgpvhp87ulsf"]
+[gd_scene load_steps=7 format=3 uid="uid://ccgpvhp87ulsf"]
 
 [ext_resource type="Script" path="res://Assets/Tiles/tile.gd" id="1_jq0y6"]
-[ext_resource type="Texture2D" uid="uid://0gdgkv26p454" path="res://Assets/Tiles/block_16x16.png" id="1_ujqn5"]
+[ext_resource type="Texture2D" uid="uid://cyoo84r4lytg5" path="res://Assets/Tiles/ChessNormal Tile B.png" id="2_k6o7m"]
+[ext_resource type="Texture2D" uid="uid://orp4xv8ysame" path="res://Assets/Tiles/ChessNormal Tile W.png" id="3_r7d80"]
 [ext_resource type="Texture2D" uid="uid://bfp0o1x6myrjg" path="res://Assets/Tiles/ChessWall Tile.png" id="3_vmr78"]
 [ext_resource type="Texture2D" uid="uid://dq3m36y5s32r6" path="res://Assets/Tiles/ChessPit Tile.png" id="4_cxp85"]
 [ext_resource type="Texture2D" uid="uid://c5vbx03g6fvau" path="res://Assets/Tiles/ChessIce Tile.png" id="5_t3jnf"]
@@ -15,11 +16,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jq0y6")
 
-[node name="Blank" type="TextureRect" parent="."]
+[node name="Black" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_ujqn5")
+texture = ExtResource("2_k6o7m")
+
+[node name="White" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_r7d80")
 
 [node name="Wall" type="TextureRect" parent="."]
 layout_mode = 0

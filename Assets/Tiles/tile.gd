@@ -4,7 +4,8 @@ var color
 var tile_id : Vector2i
 var tile_type : int
 
-var blank_tile : Node
+var black_tile : Node
+var white_tile : Node
 var wall_tile : Node
 var pit_tile : Node
 var ice_tile : Node
@@ -15,7 +16,8 @@ func _ready():
 	# Mostly just sending the id back so the game state can handle it
 	$Button.pressed.connect(get_node("/root/GameState").click_tile.bind(tile_id))
 	
-	blank_tile = $Blank
+	black_tile = $Black
+	white_tile = $White
 	wall_tile = $Wall
 	pit_tile = $Pit
 	ice_tile = $Ice
@@ -26,14 +28,17 @@ func _ready():
 func change_tile_type(new_type : int):
 	tile_type = new_type
 	
-	blank_tile.visible = false
+	black_tile.visible = false
+	white_tile.visible = false
 	wall_tile.visible = false
 	pit_tile.visible = false
 	ice_tile.visible = false
 	border_tile.visible = false
 	
-	if new_type == 0:
-		blank_tile.visible = true
+	if new_type == 0 && (tile_id.x + tile_id.y) % 2 == 1:
+		black_tile.visible = true
+	if new_type == 0 && (tile_id.x + tile_id.y) % 2 == 0:
+		white_tile.visible = true
 	if new_type == 1:
 		wall_tile.visible = true
 	if new_type == 2:
