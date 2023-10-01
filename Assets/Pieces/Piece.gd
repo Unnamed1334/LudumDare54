@@ -49,9 +49,9 @@ func _ready():
 	
 	playerSide = 1
 	
-	change_tile_type(piece_type)
+	change_piece_type(piece_type)
 
-func change_tile_type(new_type : int):
+func change_piece_type(new_type : int):
 	piece_type = new_type
 	
 	wpawn.visible = false
