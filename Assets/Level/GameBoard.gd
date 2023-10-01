@@ -9,6 +9,7 @@ func _ready():
 	var id = 0;
 	for c in get_children():
 		c.tile_id = Vector2i(id % columns, floor(id / columns))
+		c.change_tile_type(0)
 		id += 1
 	
 	# Create the tiles
