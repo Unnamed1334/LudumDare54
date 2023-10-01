@@ -34,6 +34,20 @@ func click_tile(pos:Vector2i):
 func get_unit(pos : Vector2i):
 	var idx : int = pos.x + 8 * pos.y
 	return units[idx]
+	
+func get_unit_side(pos : Vector2i):
+	var idx : int = pos.x + 8 * pos.y
+	if units[idx]:
+		return units[idx].playerSide
+	else:
+		return 0
+	
+func get_unit_type(pos : Vector2i):
+	var idx : int = pos.x + 8 * pos.y
+	if units[idx]:
+		return units[idx].type
+	else:
+		return 0
 
 func move_unit(unit: Node, new_pos : Vector2i):
 	if units.size() != 64:

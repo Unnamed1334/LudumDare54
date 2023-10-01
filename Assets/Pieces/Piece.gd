@@ -120,15 +120,30 @@ func place_moves() -> Array[Vector2i]:
 		var dir : Vector2i = Vector2i(0,-1)
 		if playerSide == 2:
 			dir = Vector2i(0,1)
+		
+		# check normal movement
 		var pos_check : Vector2i = pos + dir
 		var tiletype : int = game_state.get_tile_type(pos_check)
-		if tiletype == 0:
+		if tiletype == 0: # should instead check if not occupied
 			return_array.append(pos_check)
+		#check Double Step move
 		if (pos.y == 6 && playerSide == 1) || (pos.y == 1 && playerSide == 2):
 			pos_check = pos + dir + dir
 			tiletype = game_state.get_tile_type(pos_check)
 			if tiletype == 0:
 				return_array.append(pos_check)
+		#check capturing
+		pos_check = pos + dir + Vector2i(1,0)
+		var captureCheck : int = game_state.get_unit_side(pos_check)
+		tiletype = game_state.get_tile_type(pos_check)
+		if captureCheck != playerSide && captureCheck != 0 && tiletype == 0:
+			return_array.append(pos_check)
+		pos_check = pos + dir + Vector2i(-1,0)
+		captureCheck = game_state.get_unit_side(pos_check)
+		tiletype = game_state.get_tile_type(pos_check)
+		if captureCheck != playerSide && captureCheck != 0 && tiletype == 0:
+			return_array.append(pos_check)
+		
 	if piece_type == 3: # knight
 		var signs = [Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
 		var moves = [[Vector2i(1,0),Vector2i(1,0),Vector2i(0,1)],[Vector2i(0,1),Vector2i(1,0),Vector2i(1,0)],
