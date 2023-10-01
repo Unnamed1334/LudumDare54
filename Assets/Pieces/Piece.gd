@@ -9,19 +9,26 @@ var selected : bool = false
 @export var in_play : bool = true
 
 @export var pos : Vector2i
+var current_tile : Control
 @export var move_icon: PackedScene
+
+var game_state : Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	game_state = get_node("/root/GameState")
 	# change active sprite based on piece value
 	#if type not in ["Pawn","Rook","Bishop","Knight","Queen","King"]:
 	#	playerSide = 0
 	$Button.pressed.connect(place_moves)
-	get_node("/root/GameState").move_unit(self, pos)
+	game_state.move_unit(self, pos)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if current_tile != null:
+		global_position = current_tile.global_position
+	#game_state.move_unit(self, pos)
 	# update piece graphics. probably should be called only when created, but it's fine.
 	#if type in ["Pawn","Rook","Bishop","Knight","Queen","King"]:
 	#	var path = "res://Assets/Pieces/Chess"

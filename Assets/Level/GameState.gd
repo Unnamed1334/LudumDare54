@@ -48,6 +48,11 @@ func move_unit(unit: Node, new_pos : Vector2i):
 	
 	# Place unit
 	units[new_idx] = unit
+	
+	# Update the graphic
+	if get_node("/root/TestLevel") != null:
+		get_node("/root/TestLevel/BoardTiles").position_unit(unit, new_pos)
+	
 
 func restart():
 	pass

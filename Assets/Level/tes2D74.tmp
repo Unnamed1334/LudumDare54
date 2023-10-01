@@ -10,7 +10,7 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="BoardTiles" type="GridContainer" parent="."]
-process_priority = -1
+process_priority = 1
 layout_mode = 0
 offset_left = 293.0
 offset_top = 45.0
@@ -18,7 +18,7 @@ offset_right = 793.0
 offset_bottom = 545.0
 theme_override_constants/h_separation = 48
 theme_override_constants/v_separation = 48
-columns = 8
+columns = 10
 script = ExtResource("1_2dgjc")
 blank_tile = ExtResource("2_uhlrx")
 
