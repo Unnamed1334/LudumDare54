@@ -25,6 +25,7 @@ offset_bottom = 20.0
 texture = ExtResource("2_0f0bo")
 
 [node name="White" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0

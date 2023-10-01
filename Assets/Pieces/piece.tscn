@@ -30,56 +30,67 @@ offset_bottom = 40.0
 texture = ExtResource("2_0j0do")
 
 [node name="bPawn" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_7hm6w")
 
 [node name="wRook" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_8jvr0")
 
 [node name="bRook" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_2edj8")
 
 [node name="wBishop" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_2kckg")
 
 [node name="bBishop" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("7_58l6n")
 
 [node name="wKnight" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("8_6cl0h")
 
 [node name="bKnight" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("9_nab8s")
 
 [node name="wQueen" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("10_lgtor")
 
 [node name="bQueen" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("11_acmfb")
 
 [node name="wKing" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("12_sggrw")
 
 [node name="bKing" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("13_7u15j")
