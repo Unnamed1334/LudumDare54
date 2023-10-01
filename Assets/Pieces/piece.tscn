@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://doam5jtndxby5"]
+[gd_scene load_steps=14 format=3 uid="uid://doam5jtndxby5"]
 
 [ext_resource type="Script" path="res://Assets/Pieces/Piece.gd" id="1_ig1e1"]
-[ext_resource type="Texture2D" uid="uid://bfp0o1x6myrjg" path="res://Assets/Tiles/ChessWall Tile.png" id="2_2r6nw"]
+[ext_resource type="Texture2D" uid="uid://dspeb8x6oce4o" path="res://Assets/Pieces/ChessPawn.png" id="2_0j0do"]
+[ext_resource type="Texture2D" uid="uid://dtq7bspxdheqw" path="res://Assets/Pieces/ChessBPawn.png" id="3_7hm6w"]
+[ext_resource type="Texture2D" uid="uid://dapk3lj1lha22" path="res://Assets/Pieces/ChessRook.png" id="4_8jvr0"]
+[ext_resource type="Texture2D" uid="uid://ipe277chn1ip" path="res://Assets/Pieces/ChessBRook.png" id="5_2edj8"]
+[ext_resource type="Texture2D" uid="uid://d424tw0bgj6p" path="res://Assets/Pieces/ChessBishop.png" id="6_2kckg"]
+[ext_resource type="Texture2D" uid="uid://swi5xiip2wwm" path="res://Assets/Pieces/ChessBBishop.png" id="7_58l6n"]
+[ext_resource type="Texture2D" uid="uid://bjgqeurbmr5j7" path="res://Assets/Pieces/ChessKnight.png" id="8_6cl0h"]
+[ext_resource type="Texture2D" uid="uid://c0tiwv1ww733a" path="res://Assets/Pieces/ChessBKnight.png" id="9_nab8s"]
+[ext_resource type="Texture2D" uid="uid://c1veoefkuaraf" path="res://Assets/Pieces/ChessQueen.png" id="10_lgtor"]
+[ext_resource type="Texture2D" uid="uid://cxfv6sno6fhtv" path="res://Assets/Pieces/ChessBQueen.png" id="11_acmfb"]
+[ext_resource type="Texture2D" uid="uid://c3fr71bn2px5n" path="res://Assets/Pieces/ChessKing.png" id="12_sggrw"]
+[ext_resource type="Texture2D" uid="uid://3xb57glptewu" path="res://Assets/Pieces/ChessBKing.png" id="13_7u15j"]
 
 [node name="Piece" type="Control"]
 layout_mode = 3
@@ -12,8 +23,63 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ig1e1")
 
-[node name="texture" type="TextureRect" parent="."]
+[node name="wPawn" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("2_2r6nw")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_0j0do")
+
+[node name="bPawn" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_7hm6w")
+
+[node name="wRook" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_8jvr0")
+
+[node name="bRook" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_2edj8")
+
+[node name="wBishop" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_2kckg")
+
+[node name="bBishop" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_58l6n")
+
+[node name="wKnight" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_6cl0h")
+
+[node name="bKnight" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_nab8s")
+
+[node name="wQueen" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_lgtor")
+
+[node name="bQueen" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("11_acmfb")
+
+[node name="wKing" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_sggrw")
+
+[node name="bKing" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("13_7u15j")
