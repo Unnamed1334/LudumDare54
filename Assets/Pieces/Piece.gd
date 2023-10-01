@@ -124,6 +124,11 @@ func place_moves() -> Array[Vector2i]:
 		var tiletype : int = game_state.get_tile_type(pos_check)
 		if tiletype == 0:
 			return_array.append(pos_check)
+		if (pos.y == 6 && playerSide == 1) || (pos.y == 1 && playerSide == 2):
+			pos_check = pos + dir + dir
+			tiletype = game_state.get_tile_type(pos_check)
+			if tiletype == 0:
+				return_array.append(pos_check)
 	if piece_type == 3: # knight
 		var signs = [Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
 		var moves = [[Vector2i(1,0),Vector2i(1,0),Vector2i(0,1)],[Vector2i(0,1),Vector2i(1,0),Vector2i(1,0)],
