@@ -235,15 +235,22 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+playerSide = 1
 
 [node name="TestPawn2" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
+piece_type = 1
+playerSide = 1
 pos = Vector2i(1, 1)
 
 [node name="TestPawn3" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
+piece_type = 2
+playerSide = 1
 pos = Vector2i(7, 0)
 
 [node name="TestPawn4" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
+piece_type = 3
+playerSide = 1
 pos = Vector2i(5, 1)

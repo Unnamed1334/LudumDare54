@@ -1,10 +1,23 @@
 extends Control
 
 var slected : bool
-var type : String	#possible values: "Pawn","Rook","Bishop","Knight","Queen","King","Wall","Pit","Ice"
-var playerSide : int#1 -> white, -1 -> black, 0 -> neutral/terrain
+@export var piece_type : int
+@export var playerSide : int
 
 var selected : bool = false
+
+var wpawn : Node
+var wrook : Node
+var wbishop : Node
+var wknight : Node
+var wqueen : Node
+var wking : Node
+var bpawn : Node
+var brook : Node
+var bbishop : Node
+var bknight : Node
+var bqueen : Node
+var bking : Node
 
 @export var in_play : bool = true
 
@@ -17,31 +30,74 @@ var game_state : Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	game_state = get_node("/root/GameState")
-	# change active sprite based on piece value
-	#if type not in ["Pawn","Rook","Bishop","Knight","Queen","King"]:
-	#	playerSide = 0
+	
 	$Button.pressed.connect(place_moves)
 	game_state.move_unit(self, pos)
-	pass # Replace with function body.
+	
+	wpawn = $wPawn
+	wrook = $wRook
+	wbishop = $wBishop
+	wknight = $wKnight
+	wqueen = $wQueen
+	wking = $wKing
+	bpawn = $bPawn
+	brook = $bRook
+	bbishop = $bBishop
+	bknight = $bKnight
+	bqueen = $bQueen
+	bking = $bKing
+	
+	playerSide = 1
+	
+	change_tile_type(piece_type)
+
+func change_tile_type(new_type : int):
+	piece_type = new_type
+	
+	wpawn.visible = false
+	bpawn.visible = false
+	wrook.visible = false
+	brook.visible = false
+	wbishop.visible = false
+	bbishop.visible = false
+	wknight.visible = false
+	bknight.visible = false
+	wqueen.visible = false
+	bqueen.visible = false
+	wking.visible = false
+	bking.visible = false
+	if playerSide == 1:
+		if new_type == 0:
+			wpawn.visible = true
+		if new_type == 1:
+			wrook.visible = true
+		if new_type == 2:
+			wbishop.visible = true
+		if new_type == 3:
+			wknight.visible = true
+		if new_type == 4:
+			wqueen.visible = true
+		if new_type == 5:
+			wking.visible = true
+	elif playerSide == 2:
+		if new_type == 0:
+			bpawn.visible = true
+		if new_type == 1:
+			brook.visible = true
+		if new_type == 2:
+			bbishop.visible = true
+		if new_type == 3:
+			bknight.visible = true
+		if new_type == 4:
+			bqueen.visible = true
+		if new_type == 5:
+			bking.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if current_tile != null:
 		global_position = current_tile.global_position
-	#game_state.move_unit(self, pos)
-	# update piece graphics. probably should be called only when created, but it's fine.
-	#if type in ["Pawn","Rook","Bishop","Knight","Queen","King"]:
-	#	var path = "res://Assets/Pieces/Chess"
-	#	if playerSide < 0:
-	#		path += "B"
-	#	path += type
-	#	path += ".png"
-	#	$Sprite.texture = load(path)
-	#else:
-	#	var path = "res://Assets/tiles/Chess"
-	#	path += type
-	#	path += " Tile.png"
-	#	$Sprite.texture = load(path)
+	
 	pass
 
 func select_unit():

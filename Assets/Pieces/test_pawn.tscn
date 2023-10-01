@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://726vr3vu87rv"]
+[gd_scene load_steps=14 format=3 uid="uid://726vr3vu87rv"]
 
-[ext_resource type="Texture2D" uid="uid://bpfy3gpa51e6a" path="res://Assets/ChessPieces.png" id="1_j5tyf"]
 [ext_resource type="Script" path="res://Assets/Pieces/Piece.gd" id="1_qxijg"]
+[ext_resource type="Texture2D" uid="uid://dspeb8x6oce4o" path="res://Assets/Pieces/ChessPawn.png" id="2_ngpkj"]
+[ext_resource type="Texture2D" uid="uid://dtq7bspxdheqw" path="res://Assets/Pieces/ChessBPawn.png" id="3_1wpyi"]
+[ext_resource type="Texture2D" uid="uid://dapk3lj1lha22" path="res://Assets/Pieces/ChessRook.png" id="4_hmnhi"]
+[ext_resource type="Texture2D" uid="uid://ipe277chn1ip" path="res://Assets/Pieces/ChessBRook.png" id="5_oowiw"]
+[ext_resource type="Texture2D" uid="uid://d424tw0bgj6p" path="res://Assets/Pieces/ChessBishop.png" id="6_pup11"]
+[ext_resource type="Texture2D" uid="uid://swi5xiip2wwm" path="res://Assets/Pieces/ChessBBishop.png" id="7_47dc0"]
+[ext_resource type="Texture2D" uid="uid://bjgqeurbmr5j7" path="res://Assets/Pieces/ChessKnight.png" id="8_3xivi"]
+[ext_resource type="Texture2D" uid="uid://c0tiwv1ww733a" path="res://Assets/Pieces/ChessBKnight.png" id="9_vmaiu"]
+[ext_resource type="Texture2D" uid="uid://c1veoefkuaraf" path="res://Assets/Pieces/ChessQueen.png" id="10_63egg"]
+[ext_resource type="Texture2D" uid="uid://cxfv6sno6fhtv" path="res://Assets/Pieces/ChessBQueen.png" id="11_vevw1"]
+[ext_resource type="Texture2D" uid="uid://c3fr71bn2px5n" path="res://Assets/Pieces/ChessKing.png" id="12_6yj0s"]
+[ext_resource type="Texture2D" uid="uid://3xb57glptewu" path="res://Assets/Pieces/ChessBKing.png" id="13_h87po"]
 
 [node name="TestPawn" type="Control"]
 layout_mode = 3
@@ -12,17 +23,189 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qxijg")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-texture = ExtResource("1_j5tyf")
-
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = -15.0
 offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
+
+[node name="wPawn" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ngpkj")
+
+[node name="bPawn" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1wpyi")
+
+[node name="wRook" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hmnhi")
+
+[node name="bRook" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_oowiw")
+
+[node name="wBishop" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_pup11")
+
+[node name="bBishop" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_47dc0")
+
+[node name="wKnight" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_3xivi")
+
+[node name="bKnight" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_vmaiu")
+
+[node name="wQueen" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_63egg")
+
+[node name="bQueen" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_vevw1")
+
+[node name="wKing" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_6yj0s")
+
+[node name="bKing" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_h87po")
