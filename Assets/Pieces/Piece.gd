@@ -97,14 +97,19 @@ func _process(delta):
 	pass
 
 func select_unit():
+	game_state.clear_ui()
+	
 	var options : Array[Vector2i] = place_moves()
 	# Set up the UI Stuff
 	for o in options:
 		var new_move = move_icon.instantiate()
+		add_child(new_move)
 		new_move.setup_move(self, o)
-		pass
+		game_state.add_ui(new_move)
+		new_move.target_tile = game_state.get_tile(o)
 
 func deselect_unit():
+	game_state.clear_ui()
 	pass
 
 # Get the places this unit can move.

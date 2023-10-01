@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://726vr3vu87rv"]
+[gd_scene load_steps=15 format=3 uid="uid://726vr3vu87rv"]
 
 [ext_resource type="Script" path="res://Assets/Pieces/Piece.gd" id="1_qxijg"]
+[ext_resource type="PackedScene" uid="uid://bl5pw5k43n6yi" path="res://Assets/UI/move_button.tscn" id="2_ebh43"]
 [ext_resource type="Texture2D" uid="uid://dspeb8x6oce4o" path="res://Assets/Pieces/ChessPawn.png" id="2_ngpkj"]
 [ext_resource type="Texture2D" uid="uid://dtq7bspxdheqw" path="res://Assets/Pieces/ChessBPawn.png" id="3_1wpyi"]
 [ext_resource type="Texture2D" uid="uid://dapk3lj1lha22" path="res://Assets/Pieces/ChessRook.png" id="4_hmnhi"]
@@ -22,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qxijg")
+move_icon = ExtResource("2_ebh43")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -43,6 +45,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_ngpkj")
 
 [node name="bPawn" type="TextureRect" parent="."]
@@ -58,6 +61,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_1wpyi")
 
 [node name="wRook" type="TextureRect" parent="."]
@@ -73,6 +77,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_hmnhi")
 
 [node name="bRook" type="TextureRect" parent="."]
@@ -88,6 +93,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("5_oowiw")
 
 [node name="wBishop" type="TextureRect" parent="."]
@@ -103,6 +109,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("6_pup11")
 
 [node name="bBishop" type="TextureRect" parent="."]
@@ -118,6 +125,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("7_47dc0")
 
 [node name="wKnight" type="TextureRect" parent="."]
@@ -133,6 +141,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_3xivi")
 
 [node name="bKnight" type="TextureRect" parent="."]
@@ -148,6 +157,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("9_vmaiu")
 
 [node name="wQueen" type="TextureRect" parent="."]
@@ -163,6 +173,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("10_63egg")
 
 [node name="bQueen" type="TextureRect" parent="."]
@@ -178,6 +189,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("11_vevw1")
 
 [node name="wKing" type="TextureRect" parent="."]
@@ -193,6 +205,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("12_6yj0s")
 
 [node name="bKing" type="TextureRect" parent="."]
@@ -208,4 +221,5 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("13_h87po")

@@ -12,10 +12,10 @@ anchors_preset = 0
 [node name="BoardTiles" type="GridContainer" parent="."]
 process_priority = -1
 layout_mode = 0
-offset_left = 293.0
-offset_top = 45.0
-offset_right = 793.0
-offset_bottom = 545.0
+offset_left = 417.0
+offset_top = 142.0
+offset_right = 917.0
+offset_bottom = 642.0
 theme_override_constants/h_separation = 48
 theme_override_constants/v_separation = 48
 columns = 8
@@ -216,10 +216,10 @@ layout_mode = 2
 
 [node name="TestLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 548.0
-offset_top = 46.0
-offset_right = 588.0
-offset_bottom = 86.0
+offset_left = 909.0
+offset_top = 20.0
+offset_right = 1112.0
+offset_bottom = 68.0
 text = "TEST"
 
 [node name="UIThings" type="Node" parent="."]

@@ -6,6 +6,10 @@ var units : Array[Node]
 
 var selected : Node
 
+
+var ui_objects : Array[Node]
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tiles.resize(64)
@@ -48,16 +52,35 @@ func move_unit(unit: Node, new_pos : Vector2i):
 	
 	# Place unit
 	units[new_idx] = unit
+	unit.pos = new_pos
 	
 	# Update the graphic
 	if get_node("/root/TestLevel") != null:
 		get_node("/root/TestLevel/BoardTiles").position_unit(unit, new_pos)
+		
+	# Clear the current UI
+	clear_ui()
 	
 func get_tile_type(pos : Vector2i) -> int:
 	var idx : int = pos.x + 8 * pos.y
 	if pos.x < 0 or pos.y < 0 or pos.x >= 8 or pos.y >= 8:
 		return 4
 	return tiles[idx]
+
+func add_ui(element: Node):
+	ui_objects.append(element)
+	pass
+
+func clear_ui():
+	for o in ui_objects:
+		o.queue_free()
+	ui_objects = []
+
+func get_tile(pos : Vector2i):
+	var idx : int = pos.x + 8 * pos.y
+	if get_node("/root/TestLevel") != null:
+		return get_node("/root/TestLevel/BoardTiles").get_child(idx)
+	return null
 
 func restart():
 	pass
