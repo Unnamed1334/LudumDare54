@@ -116,14 +116,72 @@ func deselect_unit():
 func place_moves() -> Array[Vector2i]:
 	var return_array : Array[Vector2i] = []
 	
-	var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1)]
-	for d in dir:
-		var pos_check : Vector2i = pos
-		pos_check += d
+	if piece_type == 0: # pawn
+		var dir : Vector2i = Vector2i(0,-1)
+		if playerSide == 2:
+			dir = Vector2i(0,1)
+		var pos_check : Vector2i = pos + dir
 		var tiletype : int = game_state.get_tile_type(pos_check)
 		if tiletype == 0:
-			print_debug(pos_check)
 			return_array.append(pos_check)
+	if piece_type == 3: # knight
+		var signs = [Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
+		var moves = [[Vector2i(1,0),Vector2i(1,0),Vector2i(0,1)],[Vector2i(0,1),Vector2i(1,0),Vector2i(1,0)],
+			[Vector2i(0,1),Vector2i(0,1),Vector2i(1,0)],[Vector2i(1,0),Vector2i(0,1),Vector2i(0,1)]]
+		
+		for s in signs:
+			for path in moves:
+				var valid = true;
+				var pos_check : Vector2i = pos
+				for move in path:
+					var next_step = move # Shift move sign to get other cases
+					next_step.x *= s.x
+					next_step.y *= s.y
+					pos_check += next_step # Do each step
+					# Valid check
+					var tiletype : int = game_state.get_tile_type(pos_check)
+					if tiletype != 0:
+						valid = false
+				if valid:
+					return_array.append(pos_check)
+	if piece_type == 1: # rook
+		var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1)]
+		for d in dir:
+			var pos_check : Vector2i = pos
+			for i in 8:
+				pos_check += d
+				var tiletype : int = game_state.get_tile_type(pos_check)
+				if tiletype == 0:
+					return_array.append(pos_check)
+	if piece_type == 2: # bishop
+		var dir : Array[Vector2i] = [Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
+		for d in dir:
+			var pos_check : Vector2i = pos
+			for i in 8:
+				pos_check += d
+				var tiletype : int = game_state.get_tile_type(pos_check)
+				if tiletype == 0:
+					return_array.append(pos_check)
+	if piece_type == 4: # queen
+		var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1),
+			Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
+		for d in dir:
+			var pos_check : Vector2i = pos
+			for i in 8:
+				pos_check += d
+				var tiletype : int = game_state.get_tile_type(pos_check)
+				if tiletype == 0:
+					return_array.append(pos_check)
+	if piece_type == 5: # king
+		var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1),
+			Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
+		for d in dir:
+			var pos_check : Vector2i = pos
+			pos_check += d
+			var tiletype : int = game_state.get_tile_type(pos_check)
+			if tiletype == 0:
+				return_array.append(pos_check)
+	
 	return return_array
 
 func take_piece():
