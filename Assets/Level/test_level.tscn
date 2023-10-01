@@ -235,22 +235,99 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-playerSide = 1
+playerSide = 2
+pos = Vector2i(0, 1)
 
 [node name="TestPawn2" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
-piece_type = 1
-playerSide = 1
+playerSide = 2
 pos = Vector2i(1, 1)
 
 [node name="TestPawn3" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
-piece_type = 2
-playerSide = 1
-pos = Vector2i(7, 0)
+playerSide = 2
+pos = Vector2i(2, 1)
 
 [node name="TestPawn4" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
-piece_type = 3
-playerSide = 1
+playerSide = 2
+pos = Vector2i(3, 1)
+
+[node name="TestPawn5" parent="Pieces" instance=ExtResource("6_7x01b")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+playerSide = 2
+pos = Vector2i(4, 1)
+
+[node name="TestPawn6" parent="Pieces" instance=ExtResource("6_7x01b")]
+layout_mode = 1
+playerSide = 2
 pos = Vector2i(5, 1)
+
+[node name="TestPawn7" parent="Pieces" instance=ExtResource("6_7x01b")]
+layout_mode = 1
+playerSide = 2
+pos = Vector2i(6, 1)
+
+[node name="TestPawn8" parent="Pieces" instance=ExtResource("6_7x01b")]
+layout_mode = 1
+playerSide = 2
+pos = Vector2i(7, 1)
+
+[node name="TestRook1" parent="Pieces" instance=ExtResource("6_7x01b")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+piece_type = 1
+playerSide = 2
+
+[node name="TestBishop1" parent="Pieces" instance=ExtResource("6_7x01b")]
+layout_mode = 1
+piece_type = 2
+playerSide = 2
+pos = Vector2i(1, 0)
+
+[node name="TestKnight1" parent="Pieces" instance=ExtResource("6_7x01b")]
+layout_mode = 1
+piece_type = 3
+playerSide = 2
+pos = Vector2i(2, 0)
+
+[node name="TestQueen" parent="Pieces" instance=ExtResource("6_7x01b")]
+layout_mode = 1
+piece_type = 4
+playerSide = 2
+pos = Vector2i(3, 0)
+
+[node name="TestKing" parent="Pieces" instance=ExtResource("6_7x01b")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+piece_type = 5
+playerSide = 2
+pos = Vector2i(4, 0)
+
+[node name="TestKnight2" parent="Pieces" instance=ExtResource("6_7x01b")]
+layout_mode = 1
+piece_type = 3
+playerSide = 2
+pos = Vector2i(5, 0)
+
+[node name="TestBishop2" parent="Pieces" instance=ExtResource("6_7x01b")]
+layout_mode = 1
+piece_type = 2
+playerSide = 2
+pos = Vector2i(6, 0)
+
+[node name="TestRook2" parent="Pieces" instance=ExtResource("6_7x01b")]
+layout_mode = 1
+piece_type = 1
+playerSide = 2
+pos = Vector2i(7, 0)

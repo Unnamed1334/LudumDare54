@@ -47,8 +47,6 @@ func _ready():
 	bqueen = $bQueen
 	bking = $bKing
 	
-	playerSide = 1
-	
 	change_piece_type(piece_type)
 
 func change_piece_type(new_type : int):
