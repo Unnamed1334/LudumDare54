@@ -53,6 +53,11 @@ func move_unit(unit: Node, new_pos : Vector2i):
 	if get_node("/root/TestLevel") != null:
 		get_node("/root/TestLevel/BoardTiles").position_unit(unit, new_pos)
 	
+func get_tile_type(pos : Vector2i) -> int:
+	var idx : int = pos.x + 8 * pos.y
+	if pos.x < 0 or pos.y < 0 or pos.x >= 8 or pos.y >= 8:
+		return 4
+	return tiles[idx]
 
 func restart():
 	pass

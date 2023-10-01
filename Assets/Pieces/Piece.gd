@@ -30,8 +30,7 @@ var game_state : Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	game_state = get_node("/root/GameState")
-	
-	$Button.pressed.connect(place_moves)
+	$Button.pressed.connect(select_unit)
 	game_state.move_unit(self, pos)
 	
 	wpawn = $wPawn
@@ -95,19 +94,32 @@ func change_piece_type(new_type : int):
 func _process(delta):
 	if current_tile != null:
 		global_position = current_tile.global_position
-	
 	pass
 
 func select_unit():
-	place_moves()
+	var options : Array[Vector2i] = place_moves()
+	# Set up the UI Stuff
+	for o in options:
+		var new_move = move_icon.instantiate()
+		new_move.setup_move(self, o)
+		pass
+
+func deselect_unit():
 	pass
 
 # Get the places this unit can move.
-func place_moves() -> Array[Node]:
-	print_debug("123")
+func place_moves() -> Array[Vector2i]:
+	var return_array : Array[Vector2i] = []
 	
-	var array : Array[Node] = []
-	return array
+	var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1)]
+	for d in dir:
+		var pos_check : Vector2i = pos
+		pos_check += d
+		var tiletype : int = game_state.get_tile_type(pos_check)
+		if tiletype == 0:
+			print_debug(pos_check)
+			return_array.append(pos_check)
+	return return_array
 
 func take_piece():
 	pass
