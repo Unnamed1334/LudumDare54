@@ -280,7 +280,14 @@ func place_moves():
 
 func take_piece():
 	in_play = false
-	global_position = Vector2(0,0)
+	var target
+	if playerSide == 1:
+		target = game_state.board.b_capture.global_position
+	else:
+		target = game_state.board.w_capture.global_position
+	var rng = RandomNumberGenerator.new()
+	target += Vector2(rng.randf_range(-80,80),rng.randf_range(-30,30))
+	global_position = target
 	if piece_type == 5:
 		# Do some game over code
 		pass

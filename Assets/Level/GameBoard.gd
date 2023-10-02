@@ -9,6 +9,9 @@ extends GridContainer
 @export var queen_ui : Node
 @export var king_ui : Node
 
+@export var b_capture : Node
+@export var w_capture : Node
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	columns = 8

@@ -10,7 +10,7 @@
 layout_mode = 3
 anchors_preset = 0
 
-[node name="BoardTiles" type="GridContainer" parent="." node_paths=PackedStringArray("pawn_ui", "rook_ui", "knight_ui", "bishop_ui", "queen_ui", "king_ui")]
+[node name="BoardTiles" type="GridContainer" parent="." node_paths=PackedStringArray("pawn_ui", "rook_ui", "knight_ui", "bishop_ui", "queen_ui", "king_ui", "b_capture", "w_capture")]
 process_priority = -1
 layout_mode = 0
 offset_left = 417.0
@@ -28,6 +28,8 @@ knight_ui = NodePath("../UIThings/Knight")
 bishop_ui = NodePath("../UIThings/Bishop")
 queen_ui = NodePath("../UIThings/Queen")
 king_ui = NodePath("../UIThings/King")
+b_capture = NodePath("../BCapture")
+w_capture = NodePath("../WCapture")
 
 [node name="BlankTile2" parent="BoardTiles" instance=ExtResource("2_uhlrx")]
 layout_mode = 2
@@ -223,11 +225,12 @@ layout_mode = 2
 
 [node name="TestLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 909.0
-offset_top = 20.0
-offset_right = 1112.0
-offset_bottom = 68.0
-text = "TEST"
+offset_left = 129.0
+offset_top = 34.0
+offset_right = 332.0
+offset_bottom = 82.0
+text = "Instructions:
+"
 
 [node name="UIThings" type="Control" parent="."]
 anchors_preset = 0
@@ -246,10 +249,10 @@ offset_bottom = 40.0
 
 [node name="NormalButton" type="Button" parent="UIThings/Queen"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 72.0
-offset_right = 175.0
-offset_bottom = 100.0
+offset_left = 226.0
+offset_top = 336.0
+offset_right = 293.0
+offset_bottom = 364.0
 script = ExtResource("4_gb3pj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UIThings/Queen/NormalButton"]
@@ -262,10 +265,10 @@ text = "Empty
 
 [node name="IceButton" type="Button" parent="UIThings/Queen"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 107.0
-offset_right = 175.0
-offset_bottom = 135.0
+offset_left = 226.0
+offset_top = 371.0
+offset_right = 293.0
+offset_bottom = 399.0
 script = ExtResource("4_gb3pj")
 tileType = 3
 
@@ -278,10 +281,10 @@ text = "Ice"
 
 [node name="PitButton" type="Button" parent="UIThings/Queen"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 178.0
-offset_right = 175.0
-offset_bottom = 206.0
+offset_left = 226.0
+offset_top = 442.0
+offset_right = 293.0
+offset_bottom = 470.0
 script = ExtResource("4_gb3pj")
 tileType = 2
 
@@ -294,10 +297,10 @@ text = "Pit"
 
 [node name="WallButton" type="Button" parent="UIThings/Queen"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 142.0
-offset_right = 175.0
-offset_bottom = 170.0
+offset_left = 226.0
+offset_top = 406.0
+offset_right = 293.0
+offset_bottom = 434.0
 script = ExtResource("4_gb3pj")
 tileType = 1
 
@@ -317,10 +320,10 @@ offset_bottom = 40.0
 
 [node name="NormalButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 72.0
-offset_right = 175.0
-offset_bottom = 100.0
+offset_left = 226.0
+offset_top = 336.0
+offset_right = 293.0
+offset_bottom = 364.0
 script = ExtResource("4_gb3pj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UIThings/King/NormalButton"]
@@ -333,10 +336,10 @@ text = "Empty
 
 [node name="IceButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 107.0
-offset_right = 175.0
-offset_bottom = 135.0
+offset_left = 226.0
+offset_top = 371.0
+offset_right = 293.0
+offset_bottom = 399.0
 script = ExtResource("4_gb3pj")
 tileType = 3
 
@@ -349,10 +352,10 @@ text = "Ice"
 
 [node name="PitButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 178.0
-offset_right = 175.0
-offset_bottom = 206.0
+offset_left = 226.0
+offset_top = 442.0
+offset_right = 293.0
+offset_bottom = 470.0
 script = ExtResource("4_gb3pj")
 tileType = 2
 
@@ -365,10 +368,10 @@ text = "Pit"
 
 [node name="WallButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 142.0
-offset_right = 175.0
-offset_bottom = 170.0
+offset_left = 226.0
+offset_top = 406.0
+offset_right = 293.0
+offset_bottom = 434.0
 script = ExtResource("4_gb3pj")
 tileType = 1
 
@@ -382,10 +385,10 @@ text = "Wall
 
 [node name="MoveButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 40.0
-offset_right = 175.0
-offset_bottom = 68.0
+offset_left = 226.0
+offset_top = 304.0
+offset_right = 293.0
+offset_bottom = 332.0
 script = ExtResource("4_gb3pj")
 tileType = -1
 
@@ -399,26 +402,20 @@ text = "Move"
 [node name="Rook" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -23.0
-offset_top = 72.0
-offset_right = 17.0
-offset_bottom = 112.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Knight" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -16.0
-offset_top = 65.0
-offset_right = 24.0
-offset_bottom = 105.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Bishop" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -24.0
-offset_top = 54.0
-offset_right = 16.0
-offset_bottom = 94.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Pieces" type="Control" parent="."]
 anchors_preset = 0
@@ -630,3 +627,18 @@ layout_mode = 1
 piece_type = 1
 playerSide = 1
 pos = Vector2i(7, 7)
+
+[node name="BCapture" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 927.0
+offset_top = 173.0
+offset_right = 967.0
+offset_bottom = 213.0
+
+[node name="WCapture" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 921.0
+offset_top = 422.0
+offset_right = 961.0
+offset_bottom = 462.0
