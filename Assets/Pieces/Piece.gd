@@ -261,7 +261,7 @@ func place_moves():
 				pos_check += d
 				if game_state.get_tile_team(pos_check) != 0:
 					if game_state.get_tile_team(pos_check) == playerSide:
-						break
+						continue
 				var tiletype : int = game_state.get_tile_type(pos_check)
 				while tiletype == 3:
 					pos_check += d # Do more steps
@@ -274,7 +274,7 @@ func place_moves():
 				if game_state.get_tile_team(pos_check) != 0:
 					if game_state.get_tile_team(pos_check) != playerSide:
 						move_icon_helper(pos_check, [], game_state.custom_tile)
-						break
+						continue
 				if tiletype == 0:
 					move_icon_helper(pos_check, [], 0)
 		else:
@@ -282,7 +282,7 @@ func place_moves():
 				var pos_check : Vector2i = pos
 				pos_check += d
 				if game_state.get_tile_team(pos_check) != 0:
-					break
+					continue
 				move_icon_helper(pos_check, [pos_check], game_state.custom_tile, true)
 
 func take_piece():
