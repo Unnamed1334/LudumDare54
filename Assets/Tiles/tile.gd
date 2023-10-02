@@ -14,7 +14,8 @@ var border_tile : Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Mostly just sending the id back so the game state can handle it
-	$Button.pressed.connect(get_node("/root/GameState").click_tile.bind(tile_id))
+	#$Button.pressed.connect(get_node("/root/GameState").click_tile.bind(tile_id))
+	$Button.pressed.connect(on_click)
 	
 	black_tile = $Black
 	white_tile = $White
@@ -24,6 +25,9 @@ func _ready():
 	border_tile = $Border
 	
 	change_tile_type(0)
+
+func on_click():
+	get_node("/root/GameState").click_tile(tile_id)
 
 func change_tile_type(new_type : int):
 	tile_type = new_type

@@ -26,6 +26,7 @@ script = ExtResource("1_qxijg")
 move_icon = ExtResource("2_ebh43")
 
 [node name="Button" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -15.0
 offset_top = -16.0

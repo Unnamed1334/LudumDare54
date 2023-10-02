@@ -98,7 +98,7 @@ func _process(delta):
 	pass
 
 func select_unit():
-	if in_play:
+	if in_play and game_state.player_turn == playerSide:
 		game_state.clear_ui()
 		
 		var options : Array[Vector2i] = place_moves()

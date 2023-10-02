@@ -11,20 +11,6 @@ func _ready():
 		c.tile_id = Vector2i(id % columns, floor(id / columns))
 		c.change_tile_type(0)
 		id += 1
-	
-	# Create the tiles
-	#columns = 8
-	#for x in columns * columns:
-	#	var tile_object = blank_tile.instantiate()
-	#	tile_object.tile_id = Vector2i(x % columns, floor(x / columns))
-	#	add_child.call_deferred(tile_object)
-	
-	# Place the units
-	#for x in columns:
-	#	var pawn_object = test_pawn.instantiate()
-	#	get_parent().add_child.call_deferred(pawn_object)
-	#	pawn_object = test_pawn.instantiate()
-	#	get_parent().add_child.call_deferred(pawn_object)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

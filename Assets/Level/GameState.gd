@@ -23,14 +23,14 @@ func _process(delta):
 func click_tile(pos:Vector2i):
 	print_debug(pos)
 	
-	var unit = get_unit(pos)
-	if selected == null:
-		if unit != null:
-			print_debug("Found something")
-			selected = unit
+	var new_unit = get_unit(pos)
+	if new_unit != null:
+		clear_ui()
+		selected = new_unit
+		new_unit.select_unit()
 	else:
-		if unit == selected:
-			selected = null
+		clear_ui()
+		selected = null
 
 func get_unit(pos : Vector2i):
 	var idx : int = pos.x + 8 * pos.y
@@ -107,6 +107,7 @@ func add_ui(element: Node):
 	pass
 
 func clear_ui():
+	selected = null
 	for o in ui_objects:
 		o.queue_free()
 	ui_objects = []
