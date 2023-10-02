@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bh4c122ljchcp"]
+[gd_scene load_steps=10 format=3 uid="uid://bh4c122ljchcp"]
 
 [ext_resource type="Script" path="res://Assets/Level/GameBoard.gd" id="1_2dgjc"]
 [ext_resource type="PackedScene" uid="uid://ccgpvhp87ulsf" path="res://Assets/Tiles/blank_tile.tscn" id="2_uhlrx"]
@@ -8,9 +8,29 @@
 [ext_resource type="PackedScene" uid="uid://726vr3vu87rv" path="res://Assets/Pieces/test_pawn.tscn" id="6_7x01b"]
 [ext_resource type="Script" path="res://Assets/Pieces/UIThings.gd" id="8_y883p"]
 
+[sub_resource type="Gradient" id="Gradient_ya4xn"]
+offsets = PackedFloat32Array(0.580645)
+colors = PackedColorArray(0.129558, 0.129558, 0.129558, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o8sqd"]
+gradient = SubResource("Gradient_ya4xn")
+
 [node name="TestLevel" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+
+[node name="BG" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="BG"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 75.0
+offset_right = 628.0
+offset_bottom = 525.0
+texture = SubResource("GradientTexture1D_o8sqd")
 
 [node name="BoardTiles" type="GridContainer" parent="." node_paths=PackedStringArray("pawn_ui", "rook_ui", "knight_ui", "bishop_ui", "queen_ui", "king_ui", "b_capture", "w_capture", "b_win", "w_win")]
 process_priority = -1
@@ -755,131 +775,98 @@ offset_top = 98.0
 offset_right = 238.0
 offset_bottom = 138.0
 
-[node name="TestLabel" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = 29.0
-offset_top = -10.0
-offset_right = 61.0
-offset_bottom = 22.0
+[node name="Letters" type="GridContainer" parent="TileLabels"]
+layout_mode = 2
+offset_left = 28.0
+offset_top = -7.0
+offset_right = 428.0
+offset_bottom = 37.0
+columns = 8
+
+[node name="TestLabel" type="RichTextLabel" parent="TileLabels/Letters"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
 text = "A
 "
 
-[node name="TestLabel2" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = 76.0
-offset_top = -10.0
-offset_right = 108.0
-offset_bottom = 22.0
+[node name="TestLabel2" type="RichTextLabel" parent="TileLabels/Letters"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
 text = "B"
 
-[node name="TestLabel3" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = 126.0
-offset_top = -10.0
-offset_right = 158.0
-offset_bottom = 22.0
+[node name="TestLabel3" type="RichTextLabel" parent="TileLabels/Letters"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
 text = "C"
 
-[node name="TestLabel4" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = 173.0
-offset_top = -10.0
-offset_right = 205.0
-offset_bottom = 22.0
+[node name="TestLabel4" type="RichTextLabel" parent="TileLabels/Letters"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
 text = "D"
 
-[node name="TestLabel5" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = 217.0
-offset_top = -10.0
-offset_right = 249.0
-offset_bottom = 22.0
+[node name="TestLabel5" type="RichTextLabel" parent="TileLabels/Letters"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
 text = "E"
 
-[node name="TestLabel6" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = 271.0
-offset_top = -8.0
-offset_right = 303.0
-offset_bottom = 24.0
+[node name="TestLabel6" type="RichTextLabel" parent="TileLabels/Letters"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
 text = "F"
 
-[node name="TestLabel7" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = 316.0
-offset_top = -8.0
-offset_right = 348.0
-offset_bottom = 24.0
+[node name="TestLabel7" type="RichTextLabel" parent="TileLabels/Letters"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
 text = "G"
 
-[node name="TestLabel8" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = 364.0
-offset_top = -8.0
-offset_right = 396.0
-offset_bottom = 24.0
+[node name="TestLabel8" type="RichTextLabel" parent="TileLabels/Letters"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
 text = "H"
 
-[node name="TestLabel9" type="RichTextLabel" parent="TileLabels"]
+[node name="GridContainer" type="GridContainer" parent="TileLabels"]
 layout_mode = 0
-offset_left = -10.0
-offset_top = 362.0
-offset_right = 22.0
-offset_bottom = 394.0
-text = "1"
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 49.0
+offset_bottom = 425.0
 
-[node name="TestLabel10" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = -9.0
-offset_top = 313.0
-offset_right = 23.0
-offset_bottom = 345.0
-text = "2"
+[node name="TestLabel16" type="RichTextLabel" parent="TileLabels/GridContainer"]
+custom_minimum_size = Vector2(48, 44)
+layout_mode = 2
+text = "8"
 
-[node name="TestLabel11" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = 266.0
-offset_right = 24.0
-offset_bottom = 298.0
-text = "3"
-
-[node name="TestLabel12" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = 221.0
-offset_right = 24.0
-offset_bottom = 253.0
-text = "4"
-
-[node name="TestLabel13" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = -7.0
-offset_top = 171.0
-offset_right = 25.0
-offset_bottom = 203.0
-text = "5"
-
-[node name="TestLabel14" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = 123.0
-offset_right = 24.0
-offset_bottom = 155.0
-text = "6"
-
-[node name="TestLabel15" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = 75.0
-offset_right = 24.0
-offset_bottom = 107.0
+[node name="TestLabel15" type="RichTextLabel" parent="TileLabels/GridContainer"]
+custom_minimum_size = Vector2(48, 44)
+layout_mode = 2
 text = "7"
 
-[node name="TestLabel16" type="RichTextLabel" parent="TileLabels"]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 27.0
-offset_right = 29.0
-offset_bottom = 59.0
-text = "8"
+[node name="TestLabel14" type="RichTextLabel" parent="TileLabels/GridContainer"]
+custom_minimum_size = Vector2(48, 44)
+layout_mode = 2
+text = "6"
+
+[node name="TestLabel13" type="RichTextLabel" parent="TileLabels/GridContainer"]
+custom_minimum_size = Vector2(48, 44)
+layout_mode = 2
+text = "5"
+
+[node name="TestLabel12" type="RichTextLabel" parent="TileLabels/GridContainer"]
+custom_minimum_size = Vector2(48, 44)
+layout_mode = 2
+text = "4"
+
+[node name="TestLabel11" type="RichTextLabel" parent="TileLabels/GridContainer"]
+custom_minimum_size = Vector2(48, 44)
+layout_mode = 2
+text = "3"
+
+[node name="TestLabel10" type="RichTextLabel" parent="TileLabels/GridContainer"]
+custom_minimum_size = Vector2(48, 44)
+layout_mode = 2
+text = "2"
+
+[node name="TestLabel9" type="RichTextLabel" parent="TileLabels/GridContainer"]
+custom_minimum_size = Vector2(48, 44)
+layout_mode = 2
+text = "1"

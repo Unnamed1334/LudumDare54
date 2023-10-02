@@ -112,8 +112,12 @@ func select_unit():
 func move_icon_helper(end_tile: Vector2i, changed_tiles:Array[Vector2i], tile_type: int, noMove : bool = false) -> Node:
 	var new_move = move_icon.instantiate()
 	add_child(new_move)
-	new_move.setup_move(self, end_tile, changed_tiles, tile_type, noMove)
-	new_move.target_tile = game_state.get_tile(end_tile)
+	if noMove:
+		new_move.setup_move(self, pos, changed_tiles, tile_type, noMove)
+		new_move.target_tile = game_state.get_tile(changed_tiles[0])
+	else:
+		new_move.setup_move(self, end_tile, changed_tiles, tile_type, noMove)
+		new_move.target_tile = game_state.get_tile(end_tile)
 	game_state.add_ui(new_move)
 	return new_move
 
@@ -267,7 +271,8 @@ func place_moves():
 	if piece_type == 5: # king
 		var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1),
 			Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
-		if game_state.custom_tile != -1:
+		if game_state.custom_tile == -1: # King moves instead
+			print_debug("king move")
 			for d in dir:
 				var pos_check : Vector2i = pos
 				pos_check += d
@@ -279,13 +284,13 @@ func place_moves():
 					pos_check += d # Do more steps
 					if game_state.get_tile_type(pos_check) == 1 || game_state.get_tile_team(pos_check) == playerSide:
 						if game_state.get_tile_type(pos_check - d) == 3:
-							move_icon_helper(pos_check - d, [], game_state.custom_tile)
+							move_icon_helper(pos_check - d, [], 0)
 						break
 						#stop sliding
 					tiletype = game_state.get_tile_type(pos_check)
 				if game_state.get_tile_team(pos_check) != 0:
 					if game_state.get_tile_team(pos_check) != playerSide:
-						move_icon_helper(pos_check, [], game_state.custom_tile)
+						move_icon_helper(pos_check, [], 0)
 						continue
 				if tiletype == 0:
 					move_icon_helper(pos_check, [], 0)
@@ -293,6 +298,8 @@ func place_moves():
 			for d in dir:
 				var pos_check : Vector2i = pos
 				pos_check += d
+				if pos_check.x < 0 or pos_check.y < 0 or pos_check.y >= 8 or pos_check.y >= 8:
+					continue
 				if game_state.get_tile_team(pos_check) != 0:
 					continue
 				move_icon_helper(pos_check, [pos_check], game_state.custom_tile, true)
