@@ -40,14 +40,14 @@ func get_unit_side(pos : Vector2i):
 	if units[idx]:
 		return units[idx].playerSide
 	else:
-		return 0
+		return -1
 	
 func get_unit_type(pos : Vector2i):
 	var idx : int = pos.x + 8 * pos.y
 	if units[idx]:
-		return units[idx].type
+		return units[idx].piece_type
 	else:
-		return 0
+		return -1
 
 func move_unit(unit: Node, new_pos : Vector2i):
 	if units.size() != 64:
