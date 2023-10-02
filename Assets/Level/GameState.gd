@@ -4,6 +4,8 @@ var board : Node
 var tiles : Array[int]
 var units : Array[Node]
 
+var pieceList : Array[Node]
+
 var selected : Node
 
 var ui_objects : Array[Node]
@@ -14,10 +16,13 @@ var custom_tile : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	board = get_node("/root/TestLevel/BoardTiles")
+	board.b_win.visible = false
+	board.w_win.visible = false
+	
 	tiles.resize(64)
 	units.resize(64)
 	
-	board = get_node("/root/TestLevel/BoardTiles")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -93,6 +98,9 @@ func move_unit(unit: Node, new_pos : Vector2i, affected_tiles : Array[Vector2i],
 
 # Position unit without updating turn
 func place_unit(unit: Node, new_pos : Vector2i):
+	if pieceList.find(unit) == -1:
+		pieceList.append(unit)
+	
 	if units.size() != 64:
 		units.resize(64)
 	var new_idx : int = new_pos.x + 8 * new_pos.y
@@ -138,5 +146,26 @@ func get_tile_team(pos : Vector2i) -> int:
 		return units[idx].playerSide
 	return 0
 
+func end_game(victor):
+	if victor == 2:
+		board.b_win.visible = true
+	if victor == 1:
+		board.w_win.visible = true
+	player_turn = 0
+	
 func restart():
-	pass
+	board.b_win.visible = false
+	board.w_win.visible = false
+	clear_ui()
+	
+	for tile_idx in 64:
+		tiles[tile_idx] = 0
+		var vec2tile = Vector2i(tile_idx % 8, floor(tile_idx / 8))
+		get_tile(vec2tile).change_tile_type(0)
+	units = []
+	units.resize(64)
+	
+	for p in pieceList:
+		p.reset_piece()
+	
+	player_turn = 1

@@ -28,8 +28,15 @@ var current_tile : Control
 
 var game_state : GameState
 
+# Stuff for restart
+var restart_pos
+var restart_type
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	restart_pos = pos
+	restart_type = piece_type
+	
 	game_state = get_node("/root/GameState")
 	$Button.pressed.connect(select_unit)
 	game_state.place_unit(self, pos)
@@ -289,5 +296,12 @@ func take_piece():
 	target += Vector2(rng.randf_range(-80,80),rng.randf_range(-30,30))
 	global_position = target
 	if piece_type == 5:
-		# Do some game over code
-		pass
+		var other_team = 1
+		if playerSide == 1:
+			other_team = 2
+		game_state.end_game(other_team)
+
+func reset_piece():
+	change_piece_type(restart_type)
+	game_state.place_unit(self, restart_pos)
+	in_play = true
