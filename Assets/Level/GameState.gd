@@ -5,6 +5,7 @@ var tiles : Array[int]
 var units : Array[Node]
 
 var pieceList : Array[Node]
+var lastPieceMoved : Node
 
 var selected : Node = null
 
@@ -75,6 +76,18 @@ func move_unit(unit: Node, new_pos : Vector2i, affected_tiles : Array[Vector2i],
 	units[new_idx] = unit
 	unit.pos = new_pos
 	
+	# handle En Passant capture
+	if unit.piece_type == 0 && lastPieceMoved:
+		var movedSide : int = unit.playerSide
+		var dir : Vector2i
+		if movedSide == 1:
+			dir = Vector2i(0,1)
+		else:
+			dir = Vector2i(0,-1)
+		print_debug(unit.pos, " ", lastPieceMoved.pos)
+		if unit.pos + dir == lastPieceMoved.pos:
+			lastPieceMoved.take_piece()
+	
 	# Promoting Pawn
 	if unit.piece_type == 0 and (new_pos.y == 0 or new_pos.y == 7):
 		unit.change_piece_type(promote_type)
@@ -104,6 +117,7 @@ func move_unit(unit: Node, new_pos : Vector2i, affected_tiles : Array[Vector2i],
 		player_turn = 1
 	
 	# Clear the current UI
+	lastPieceMoved = unit
 	clear_ui()
 	selected = null
 	custom_tile = 0

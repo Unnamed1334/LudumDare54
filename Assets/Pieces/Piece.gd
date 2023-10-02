@@ -147,10 +147,18 @@ func place_moves():
 		tiletype = game_state.get_tile_type(pos_check)
 		if captureCheck != playerSide && captureCheck != 0 && tiletype in VALID_TILES:
 			move_icon_helper(pos_check, [pos_check], 0)
+		# En Passant
+		var sidePos : Vector2i = pos + Vector2i(1,0)
+		if game_state.get_tile_team(sidePos) != playerSide && game_state.get_unit_type(sidePos) == 0 && tiletype in VALID_TILES && game_state.lastPieceMoved == game_state.get_unit(sidePos):
+			move_icon_helper(pos_check, [pos_check], 0)
+			
 		pos_check = pos + dir + Vector2i(-1,0)
 		captureCheck = game_state.get_tile_team(pos_check)
 		tiletype = game_state.get_tile_type(pos_check)
 		if captureCheck != playerSide && captureCheck != 0 && tiletype in VALID_TILES:
+			move_icon_helper(pos_check, [pos_check], 0)
+		sidePos = pos + Vector2i(-1,0)
+		if game_state.get_tile_team(sidePos) != playerSide && game_state.get_unit_type(sidePos) == 0 && tiletype in VALID_TILES && game_state.lastPieceMoved == game_state.get_unit(sidePos):
 			move_icon_helper(pos_check, [pos_check], 0)
 	if piece_type == 3: # knight
 		var signs = [Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
