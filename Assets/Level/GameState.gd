@@ -9,6 +9,7 @@ var selected : Node
 
 var ui_objects : Array[Node]
 
+var player_turn = 1;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,10 +75,27 @@ func move_unit(unit: Node, new_pos : Vector2i, affected_tiles : Array[Vector2i],
 	# Update the graphic
 	if get_node("/root/TestLevel") != null:
 		get_node("/root/TestLevel/BoardTiles").position_unit(unit, new_pos)
-		
+	
+	if player_turn == 1:
+		player_turn = 2
+	else:
+		player_turn = 1
+	
 	# Clear the current UI
 	clear_ui()
-	
+
+# Position unit without updating turn
+func place_unit(unit: Node, new_pos : Vector2i):
+	if units.size() != 64:
+		units.resize(64)
+	var new_idx : int = new_pos.x + 8 * new_pos.y
+	# Place unit
+	units[new_idx] = unit
+	unit.pos = new_pos
+	# Update the graphic
+	if get_node("/root/TestLevel") != null:
+		get_node("/root/TestLevel/BoardTiles").position_unit(unit, new_pos)
+
 func get_tile_type(pos : Vector2i) -> int:
 	var idx : int = pos.x + 8 * pos.y
 	if pos.x < 0 or pos.y < 0 or pos.x >= 8 or pos.y >= 8:

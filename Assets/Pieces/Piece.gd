@@ -32,7 +32,7 @@ var game_state : GameState
 func _ready():
 	game_state = get_node("/root/GameState")
 	$Button.pressed.connect(select_unit)
-	game_state.move_unit(self, pos, [], 0)
+	game_state.place_unit(self, pos)
 	
 	wpawn = $wPawn
 	wrook = $wRook
@@ -93,21 +93,22 @@ func change_piece_type(new_type : int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if current_tile != null:
+	if current_tile != null && in_play:
 		global_position = current_tile.global_position
 	pass
 
 func select_unit():
-	game_state.clear_ui()
-	
-	var options : Array[Vector2i] = place_moves()
-	# Set up the UI Stuff
-	for o in options:
-		var new_move = move_icon.instantiate()
-		add_child(new_move)
-		new_move.setup_move(self, o)
-		game_state.add_ui(new_move)
-		new_move.target_tile = game_state.get_tile(o)
+	if in_play:
+		game_state.clear_ui()
+		
+		var options : Array[Vector2i] = place_moves()
+		# Set up the UI Stuff
+		for o in options:
+			var new_move = move_icon.instantiate()
+			add_child(new_move)
+			new_move.setup_move(self, o)
+			game_state.add_ui(new_move)
+			new_move.target_tile = game_state.get_tile(o)
 
 func deselect_unit():
 	game_state.clear_ui()
@@ -221,4 +222,8 @@ func place_moves() -> Array[Vector2i]:
 	return return_array
 
 func take_piece():
-	pass
+	in_play = false
+	global_position = Vector2(0,0)
+	if piece_type == 5:
+		# Do some game over code
+		pass
