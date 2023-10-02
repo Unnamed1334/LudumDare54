@@ -2,7 +2,7 @@ extends Control
 
 var color 
 var tile_id : Vector2i
-var tile_type : int
+var tile_type : int # 0-nominal; 1-Wall; 2-Pit; 3-Ice
 
 var black_tile : Node
 var white_tile : Node

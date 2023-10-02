@@ -44,7 +44,7 @@ func get_unit_type(pos : Vector2i):
 	else:
 		return -1
 
-func move_unit(unit: Node, new_pos : Vector2i):
+func move_unit(unit: Node, new_pos : Vector2i, affected_tiles : Array[Vector2i], terraforming_mode : int):
 	if units.size() != 64:
 		units.resize(64)
 	
@@ -52,7 +52,7 @@ func move_unit(unit: Node, new_pos : Vector2i):
 	# Remove from old
 	if old_idx != -1:
 		units[old_idx] = null
-		
+	
 	var new_idx : int = new_pos.x + 8 * new_pos.y
 	# Take units it lands on
 	if units[new_idx] != null:
@@ -62,6 +62,14 @@ func move_unit(unit: Node, new_pos : Vector2i):
 	# Place unit
 	units[new_idx] = unit
 	unit.pos = new_pos
+	
+	# Handle terraforming
+	for tile in affected_tiles:
+		tiles[tile.x+8 * tile.y] = terraforming_mode
+	
+	# capture in pits
+	if get_tile_type(unit.pos) == 2:
+		unit.take_piece()
 	
 	# Update the graphic
 	if get_node("/root/TestLevel") != null:

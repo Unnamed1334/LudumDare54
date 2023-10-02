@@ -32,7 +32,7 @@ var game_state : GameState
 func _ready():
 	game_state = get_node("/root/GameState")
 	$Button.pressed.connect(select_unit)
-	game_state.move_unit(self, pos)
+	game_state.move_unit(self, pos, [], 0)
 	
 	wpawn = $wPawn
 	wrook = $wRook
