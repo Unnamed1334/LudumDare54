@@ -1,6 +1,7 @@
 extends Control
 
 var slected : bool
+var doubleStep : bool = false
 @export var piece_type : int
 @export var playerSide : int
 
@@ -131,6 +132,7 @@ func place_moves():
 			dir = Vector2i(0,1)
 		
 		# check normal movement
+		doubleStep = false
 		var pos_check : Vector2i = pos + dir
 		var tiletype : int = game_state.get_tile_type(pos_check)
 		if tiletype in VALID_TILES && game_state.get_unit_type(pos_check) == -1:
@@ -140,6 +142,7 @@ func place_moves():
 				pos_check = pos + dir + dir
 				tiletype = game_state.get_tile_type(pos_check)
 				if tiletype in VALID_TILES && game_state.get_unit_type(pos_check) == -1:
+					doubleStep = true
 					move_icon_helper(pos_check, [pos_check-dir, pos_check], 0)
 		#check capturing
 		pos_check = pos + dir + Vector2i(1,0)
@@ -149,7 +152,7 @@ func place_moves():
 			move_icon_helper(pos_check, [pos_check], 0)
 		# En Passant
 		var sidePos : Vector2i = pos + Vector2i(1,0)
-		if game_state.get_tile_team(sidePos) != playerSide && game_state.get_unit_type(sidePos) == 0 && tiletype in VALID_TILES && game_state.lastPieceMoved == game_state.get_unit(sidePos):
+		if game_state.get_tile_team(sidePos) != playerSide && game_state.get_unit_type(sidePos) == 0 && tiletype in VALID_TILES && game_state.lastPieceMoved == game_state.get_unit(sidePos) && game_state.lastPieceMoved.doubleStep:
 			move_icon_helper(pos_check, [pos_check], 0)
 			
 		pos_check = pos + dir + Vector2i(-1,0)
@@ -158,7 +161,7 @@ func place_moves():
 		if captureCheck != playerSide && captureCheck != 0 && tiletype in VALID_TILES:
 			move_icon_helper(pos_check, [pos_check], 0)
 		sidePos = pos + Vector2i(-1,0)
-		if game_state.get_tile_team(sidePos) != playerSide && game_state.get_unit_type(sidePos) == 0 && tiletype in VALID_TILES && game_state.lastPieceMoved == game_state.get_unit(sidePos):
+		if game_state.get_tile_team(sidePos) != playerSide && game_state.get_unit_type(sidePos) == 0 && tiletype in VALID_TILES && game_state.lastPieceMoved == game_state.get_unit(sidePos) && game_state.lastPieceMoved.doubleStep:
 			move_icon_helper(pos_check, [pos_check], 0)
 	if piece_type == 3: # knight
 		var signs = [Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
@@ -197,7 +200,7 @@ func place_moves():
 				while tiletype == 3:
 					pos_check += d # Do more stepsif game_state.get_tile_type(pos_check) == 1 || game_state.get_unit_type(pos_check) != -1:
 					if game_state.get_tile_type(pos_check - d) == 3:
-						move_icon_helper(pos_check - d, [pos], 2)
+						move_icon_helper(pos_check - d, [pos], 1)
 					break
 					#stop sliding
 					tiletype = game_state.get_tile_type(pos_check)
