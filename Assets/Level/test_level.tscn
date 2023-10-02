@@ -13,10 +13,10 @@ anchors_preset = 0
 [node name="BoardTiles" type="GridContainer" parent="." node_paths=PackedStringArray("pawn_ui", "rook_ui", "knight_ui", "bishop_ui", "queen_ui", "king_ui", "b_capture", "w_capture")]
 process_priority = -1
 layout_mode = 0
-offset_left = 417.0
-offset_top = 142.0
-offset_right = 917.0
-offset_bottom = 642.0
+offset_left = 234.0
+offset_top = 136.0
+offset_right = 734.0
+offset_bottom = 636.0
 theme_override_constants/h_separation = 48
 theme_override_constants/v_separation = 48
 columns = 8
@@ -225,10 +225,10 @@ layout_mode = 2
 
 [node name="TestLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 129.0
-offset_top = 34.0
-offset_right = 332.0
-offset_bottom = 82.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 218.0
+offset_bottom = 63.0
 text = "Instructions:
 "
 
@@ -249,10 +249,10 @@ offset_bottom = 40.0
 
 [node name="NormalButton" type="Button" parent="UIThings/Queen"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 336.0
-offset_right = 293.0
-offset_bottom = 364.0
+offset_left = 59.0
+offset_top = 346.0
+offset_right = 126.0
+offset_bottom = 374.0
 script = ExtResource("4_gb3pj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UIThings/Queen/NormalButton"]
@@ -265,10 +265,10 @@ text = "Empty
 
 [node name="IceButton" type="Button" parent="UIThings/Queen"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 371.0
-offset_right = 293.0
-offset_bottom = 399.0
+offset_left = 59.0
+offset_top = 381.0
+offset_right = 126.0
+offset_bottom = 409.0
 script = ExtResource("4_gb3pj")
 tileType = 3
 
@@ -281,10 +281,10 @@ text = "Ice"
 
 [node name="PitButton" type="Button" parent="UIThings/Queen"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 442.0
-offset_right = 293.0
-offset_bottom = 470.0
+offset_left = 59.0
+offset_top = 452.0
+offset_right = 126.0
+offset_bottom = 480.0
 script = ExtResource("4_gb3pj")
 tileType = 2
 
@@ -297,10 +297,10 @@ text = "Pit"
 
 [node name="WallButton" type="Button" parent="UIThings/Queen"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 406.0
-offset_right = 293.0
-offset_bottom = 434.0
+offset_left = 59.0
+offset_top = 416.0
+offset_right = 126.0
+offset_bottom = 444.0
 script = ExtResource("4_gb3pj")
 tileType = 1
 
@@ -320,10 +320,10 @@ offset_bottom = 40.0
 
 [node name="NormalButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 336.0
-offset_right = 293.0
-offset_bottom = 364.0
+offset_left = 59.0
+offset_top = 346.0
+offset_right = 126.0
+offset_bottom = 374.0
 script = ExtResource("4_gb3pj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UIThings/King/NormalButton"]
@@ -336,10 +336,10 @@ text = "Empty
 
 [node name="IceButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 371.0
-offset_right = 293.0
-offset_bottom = 399.0
+offset_left = 59.0
+offset_top = 381.0
+offset_right = 126.0
+offset_bottom = 409.0
 script = ExtResource("4_gb3pj")
 tileType = 3
 
@@ -352,10 +352,10 @@ text = "Ice"
 
 [node name="PitButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 442.0
-offset_right = 293.0
-offset_bottom = 470.0
+offset_left = 59.0
+offset_top = 452.0
+offset_right = 126.0
+offset_bottom = 480.0
 script = ExtResource("4_gb3pj")
 tileType = 2
 
@@ -368,10 +368,10 @@ text = "Pit"
 
 [node name="WallButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 406.0
-offset_right = 293.0
-offset_bottom = 434.0
+offset_left = 59.0
+offset_top = 416.0
+offset_right = 126.0
+offset_bottom = 444.0
 script = ExtResource("4_gb3pj")
 tileType = 1
 
@@ -385,10 +385,10 @@ text = "Wall
 
 [node name="MoveButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 304.0
-offset_right = 293.0
-offset_bottom = 332.0
+offset_left = 59.0
+offset_top = 314.0
+offset_right = 126.0
+offset_bottom = 342.0
 script = ExtResource("4_gb3pj")
 tileType = -1
 
@@ -631,14 +631,134 @@ pos = Vector2i(7, 7)
 [node name="BCapture" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 927.0
-offset_top = 173.0
-offset_right = 967.0
-offset_bottom = 213.0
+offset_left = 699.0
+offset_top = 160.0
+offset_right = 739.0
+offset_bottom = 200.0
 
 [node name="WCapture" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 921.0
-offset_top = 422.0
-offset_right = 961.0
-offset_bottom = 462.0
+offset_left = 695.0
+offset_top = 446.0
+offset_right = 735.0
+offset_bottom = 486.0
+
+[node name="TileLabels" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 198.0
+offset_top = 98.0
+offset_right = 238.0
+offset_bottom = 138.0
+
+[node name="TestLabel" type="RichTextLabel" parent="TileLabels"]
+offset_left = 29.0
+offset_top = -10.0
+offset_right = 61.0
+offset_bottom = 22.0
+text = "A
+"
+
+[node name="TestLabel2" type="RichTextLabel" parent="TileLabels"]
+offset_left = 76.0
+offset_top = -10.0
+offset_right = 108.0
+offset_bottom = 22.0
+text = "B"
+
+[node name="TestLabel3" type="RichTextLabel" parent="TileLabels"]
+offset_left = 126.0
+offset_top = -10.0
+offset_right = 158.0
+offset_bottom = 22.0
+text = "C"
+
+[node name="TestLabel4" type="RichTextLabel" parent="TileLabels"]
+offset_left = 173.0
+offset_top = -10.0
+offset_right = 205.0
+offset_bottom = 22.0
+text = "D"
+
+[node name="TestLabel5" type="RichTextLabel" parent="TileLabels"]
+offset_left = 217.0
+offset_top = -10.0
+offset_right = 249.0
+offset_bottom = 22.0
+text = "E"
+
+[node name="TestLabel6" type="RichTextLabel" parent="TileLabels"]
+offset_left = 271.0
+offset_top = -8.0
+offset_right = 303.0
+offset_bottom = 24.0
+text = "F"
+
+[node name="TestLabel7" type="RichTextLabel" parent="TileLabels"]
+offset_left = 316.0
+offset_top = -8.0
+offset_right = 348.0
+offset_bottom = 24.0
+text = "G"
+
+[node name="TestLabel8" type="RichTextLabel" parent="TileLabels"]
+offset_left = 364.0
+offset_top = -8.0
+offset_right = 396.0
+offset_bottom = 24.0
+text = "H"
+
+[node name="TestLabel9" type="RichTextLabel" parent="TileLabels"]
+offset_left = -10.0
+offset_top = 362.0
+offset_right = 22.0
+offset_bottom = 394.0
+text = "1"
+
+[node name="TestLabel10" type="RichTextLabel" parent="TileLabels"]
+offset_left = -9.0
+offset_top = 313.0
+offset_right = 23.0
+offset_bottom = 345.0
+text = "2"
+
+[node name="TestLabel11" type="RichTextLabel" parent="TileLabels"]
+offset_left = -8.0
+offset_top = 266.0
+offset_right = 24.0
+offset_bottom = 298.0
+text = "3"
+
+[node name="TestLabel12" type="RichTextLabel" parent="TileLabels"]
+offset_left = -8.0
+offset_top = 221.0
+offset_right = 24.0
+offset_bottom = 253.0
+text = "4"
+
+[node name="TestLabel13" type="RichTextLabel" parent="TileLabels"]
+offset_left = -7.0
+offset_top = 171.0
+offset_right = 25.0
+offset_bottom = 203.0
+text = "5"
+
+[node name="TestLabel14" type="RichTextLabel" parent="TileLabels"]
+offset_left = -8.0
+offset_top = 123.0
+offset_right = 24.0
+offset_bottom = 155.0
+text = "6"
+
+[node name="TestLabel15" type="RichTextLabel" parent="TileLabels"]
+offset_left = -8.0
+offset_top = 75.0
+offset_right = 24.0
+offset_bottom = 107.0
+text = "7"
+
+[node name="TestLabel16" type="RichTextLabel" parent="TileLabels"]
+offset_left = -3.0
+offset_top = 27.0
+offset_right = 29.0
+offset_bottom = 59.0
+text = "8"
