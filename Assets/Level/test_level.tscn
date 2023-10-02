@@ -249,12 +249,26 @@ layout_mode = 2
 
 [node name="TestLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 15.0
-offset_right = 218.0
-offset_bottom = 63.0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 176.0
+offset_bottom = 385.0
+theme_override_font_sizes/normal_font_size = 10
 text = "Instructions:
-"
+
+Capture the enemy King to win
+
+Pawns are now Workers. They ignore special terrain types, restoring tiles they enter to normal.
+
+Rooks are now Extruders. They create a Wall tile in the space they started in which blocks the movement of all pieces except pawns and knights.
+
+Bishops are now Sappers. They create a Pit in the tile they started in that capture any pieces except pawns that stop on them.
+
+Knights are now Cryoformers. They leave tiles of Ice in the space they started in, which causes pieces that would stop in that space to slide. Pieces that slide cannot capture until they stop sliding. Pieces that slide into a wall/board edge stop, even if still on ice. Pieces that slide into a pit are captured.
+
+Queens are now Mass Transmuters. When they move, choose a tile type. Queens transmute every tile they pass over to the chosen type, except the destination tile.
+
+Kings are now your Terraforming Core. They can, instead of moving, change an adjacent unoccupied tile into any other tile."
 
 [node name="UIThings" type="Control" parent="."]
 anchors_preset = 0
@@ -262,8 +276,10 @@ script = ExtResource("8_y883p")
 
 [node name="Pawn" type="Control" parent="UIThings"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -3.0
+offset_top = 90.0
+offset_right = 37.0
+offset_bottom = 130.0
 
 [node name="RookButton" type="Button" parent="UIThings/Pawn"]
 layout_mode = 0
@@ -334,8 +350,10 @@ text = "Queen
 [node name="Queen" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -3.0
+offset_top = 90.0
+offset_right = 37.0
+offset_bottom = 130.0
 
 [node name="NormalButton" type="Button" parent="UIThings/Queen"]
 layout_mode = 0
@@ -405,8 +423,10 @@ text = "Wall
 [node name="King" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -3.0
+offset_top = 90.0
+offset_right = 37.0
+offset_bottom = 130.0
 
 [node name="NormalButton" type="Button" parent="UIThings/King"]
 layout_mode = 0
@@ -492,20 +512,26 @@ text = "Move"
 [node name="Rook" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -3.0
+offset_top = 90.0
+offset_right = 37.0
+offset_bottom = 130.0
 
 [node name="Knight" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -3.0
+offset_top = 90.0
+offset_right = 37.0
+offset_bottom = 130.0
 
 [node name="Bishop" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -3.0
+offset_top = 90.0
+offset_right = 37.0
+offset_bottom = 130.0
 
 [node name="Restart" type="Button" parent="UIThings"]
 layout_mode = 0
