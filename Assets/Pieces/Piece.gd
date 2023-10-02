@@ -106,7 +106,14 @@ func select_unit():
 		for o in options:
 			var new_move = move_icon.instantiate()
 			add_child(new_move)
-			new_move.setup_move(self, o)
+			var terraformed_tiles : Array[Vector2i]
+			var terra_mode : int
+			# check, in order: Unit type, Tiles passed over, custom selection
+			if piece_type in [0,1,2,3]:
+				terra_mode = piece_type
+			else:
+				terra_mode = 0; # instead, read from custom tile selection
+			new_move.setup_move(self, o, terraformed_tiles, terra_mode)
 			game_state.add_ui(new_move)
 			new_move.target_tile = game_state.get_tile(o)
 

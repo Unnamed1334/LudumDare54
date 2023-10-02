@@ -17,7 +17,7 @@ func _process(delta):
 		global_position = target_tile.global_position
 	pass
 
-func setup_move(new_unit, new_id, new_affected_tiles, new_terraforming_mode):
+func setup_move(new_unit, new_id, new_affected_tiles : Array[Vector2i], new_terraforming_mode):
 	id = new_id
 	unit = new_unit
 	affected_tiles = new_affected_tiles
