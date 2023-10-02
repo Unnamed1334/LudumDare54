@@ -234,6 +234,8 @@ func place_moves():
 				pos_check += d
 				if pos_check.x < 0 or pos_check.x >= 8 or pos_check.y < 0 or pos_check.y >= 8: # edge of map
 					break
+				if game_state.get_tile_type(pos_check) == 1: # wall
+					break
 				if game_state.get_tile_team(pos_check) != 0: # ally
 					if game_state.get_tile_team(pos_check) == playerSide:
 						break
