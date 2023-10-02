@@ -96,5 +96,15 @@ func get_tile(pos : Vector2i):
 		return get_node("/root/TestLevel/BoardTiles").get_child(idx)
 	return null
 
+
+func get_tile_team(pos : Vector2i) -> int:
+	# 0 - empty, 1 - white, 2 - black
+	var idx : int = pos.x + 8 * pos.y
+	if pos.x < 0 or pos.y < 0 or pos.x >= 8 or idx >= 64:
+		return 0
+	if units[idx] != null:
+		return units[idx].playerSide
+	return 0
+
 func restart():
 	pass
