@@ -12,6 +12,7 @@ var ui_objects : Array[Node]
 
 var player_turn = 1;
 
+var promote_type : int = 1
 var custom_tile : int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -73,6 +74,10 @@ func move_unit(unit: Node, new_pos : Vector2i, affected_tiles : Array[Vector2i],
 	# Place unit
 	units[new_idx] = unit
 	unit.pos = new_pos
+	
+	# Promoting Pawn
+	if unit.piece_type == 0 and (new_pos.y == 0 or new_pos.y == 7):
+		unit.change_piece_type(promote_type)
 	
 	if terraforming_mode == 5:
 		terraforming_mode = custom_tile

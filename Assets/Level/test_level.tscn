@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh4c122ljchcp"]
+[gd_scene load_steps=8 format=3 uid="uid://bh4c122ljchcp"]
 
 [ext_resource type="Script" path="res://Assets/Level/GameBoard.gd" id="1_2dgjc"]
 [ext_resource type="PackedScene" uid="uid://ccgpvhp87ulsf" path="res://Assets/Tiles/blank_tile.tscn" id="2_uhlrx"]
+[ext_resource type="Script" path="res://Assets/UI/PromoteButton.gd" id="4_fk0u0"]
 [ext_resource type="Script" path="res://Assets/UI/TileTypeButton.gd" id="4_gb3pj"]
 [ext_resource type="Script" path="res://Assets/UI/Restart.gd" id="5_vd515"]
 [ext_resource type="PackedScene" uid="uid://726vr3vu87rv" path="res://Assets/Pieces/test_pawn.tscn" id="6_7x01b"]
@@ -243,6 +244,72 @@ script = ExtResource("8_y883p")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="RookButton" type="Button" parent="UIThings/Pawn"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 346.0
+offset_right = 126.0
+offset_bottom = 374.0
+script = ExtResource("4_fk0u0")
+promoteType = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/Pawn/RookButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Rook
+"
+
+[node name="BishopButton" type="Button" parent="UIThings/Pawn"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 381.0
+offset_right = 126.0
+offset_bottom = 409.0
+script = ExtResource("4_fk0u0")
+promoteType = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/Pawn/BishopButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Bishop"
+
+[node name="KnightButton" type="Button" parent="UIThings/Pawn"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 452.0
+offset_right = 126.0
+offset_bottom = 480.0
+script = ExtResource("4_fk0u0")
+promoteType = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/Pawn/KnightButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Knight"
+
+[node name="QueenButton" type="Button" parent="UIThings/Pawn"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 416.0
+offset_right = 126.0
+offset_bottom = 444.0
+script = ExtResource("4_fk0u0")
+promoteType = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/Pawn/QueenButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Queen
+"
 
 [node name="Queen" type="Control" parent="UIThings"]
 layout_mode = 3
