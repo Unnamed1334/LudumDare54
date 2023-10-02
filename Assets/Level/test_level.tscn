@@ -222,8 +222,44 @@ offset_right = 1112.0
 offset_bottom = 68.0
 text = "TEST"
 
-[node name="UIThings" type="Node" parent="."]
+[node name="UIThings" type="Control" parent="."]
+anchors_preset = 0
 script = ExtResource("8_y883p")
+
+[node name="Pawn" type="Control" parent="UIThings"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Queen" type="Control" parent="UIThings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="King" type="Control" parent="UIThings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Rook" type="Control" parent="UIThings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Knight" type="Control" parent="UIThings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bishop" type="Control" parent="UIThings"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Pieces" type="Control" parent="."]
 anchors_preset = 0

@@ -6,10 +6,18 @@ var units : Array[Node]
 
 var selected : Node
 
-
 var ui_objects : Array[Node]
 
 var player_turn = 1;
+
+var custom_tile : int = 0
+
+var pawn_ui
+var rook_ui
+var knight_ui
+var bishop_ui
+var queen_ui
+var king_ui
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -66,7 +74,10 @@ func move_unit(unit: Node, new_pos : Vector2i, affected_tiles : Array[Vector2i],
 	
 	# Handle terraforming
 	for tile in affected_tiles:
-		tiles[tile.x+8 * tile.y] = terraforming_mode
+		var tile_idx : int = tile.x+8 * tile.y
+		if tile.x >= 0 and tile.x < 8 and tile.y >= 0 and tile.y < 8:
+			tiles[tile_idx] = terraforming_mode
+			get_tile(tile).change_tile_type(terraforming_mode)
 	
 	# capture in pits
 	if get_tile_type(unit.pos) == 2:
@@ -111,6 +122,7 @@ func clear_ui():
 	for o in ui_objects:
 		o.queue_free()
 	ui_objects = []
+	custom_tile = 0
 
 func get_tile(pos : Vector2i):
 	var idx : int = pos.x + 8 * pos.y

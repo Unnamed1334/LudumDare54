@@ -100,31 +100,22 @@ func _process(delta):
 func select_unit():
 	if in_play and game_state.player_turn == playerSide:
 		game_state.clear_ui()
-		
-		var options : Array[Vector2i] = place_moves()
-		# Set up the UI Stuff
-		for o in options:
-			var new_move = move_icon.instantiate()
-			add_child(new_move)
-			var terraformed_tiles : Array[Vector2i]
-			var terra_mode : int
-			# check, in order: Unit type, Tiles passed over, custom selection
-			if piece_type in [0,1,2,3]:
-				terra_mode = piece_type
-			else:
-				terra_mode = 0; # instead, read from custom tile selection
-			new_move.setup_move(self, o, terraformed_tiles, terra_mode)
-			game_state.add_ui(new_move)
-			new_move.target_tile = game_state.get_tile(o)
+		place_moves()
+
+func move_icon_helper(end_tile: Vector2i, changed_tiles:Array[Vector2i], tile_type: int) -> Node:
+	var new_move = move_icon.instantiate()
+	add_child(new_move)
+	new_move.setup_move(self, end_tile, changed_tiles, tile_type)
+	new_move.target_tile = game_state.get_tile(end_tile)
+	game_state.add_ui(new_move)
+	return new_move
 
 func deselect_unit():
 	game_state.clear_ui()
 	pass
 
 # Get the places this unit can move.
-func place_moves() -> Array[Vector2i]:
-	var return_array : Array[Vector2i] = []
-	
+func place_moves():
 	if piece_type == 0: # pawn
 		var dir : Vector2i = Vector2i(0,-1)
 		if playerSide == 2:
@@ -134,24 +125,24 @@ func place_moves() -> Array[Vector2i]:
 		var pos_check : Vector2i = pos + dir
 		var tiletype : int = game_state.get_tile_type(pos_check)
 		if tiletype in VALID_TILES && game_state.get_unit_type(pos_check) == -1: # should instead check if not occupied
-			return_array.append(pos_check)
+			move_icon_helper(pos_check, [pos_check], 0)
 			#check Double Step move
 			if (pos.y == 6 && playerSide == 1) || (pos.y == 1 && playerSide == 2):
 				pos_check = pos + dir + dir
 				tiletype = game_state.get_tile_type(pos_check)
 				if tiletype in VALID_TILES && game_state.get_unit_type(pos_check) == -1:
-					return_array.append(pos_check)
+					move_icon_helper(pos_check, [pos_check], 0)
 		#check capturing
 		pos_check = pos + dir + Vector2i(1,0)
 		var captureCheck : int = game_state.get_tile_team(pos_check)
 		tiletype = game_state.get_tile_type(pos_check)
 		if captureCheck != playerSide && captureCheck != 0 && tiletype == 0:
-			return_array.append(pos_check)
+			move_icon_helper(pos_check, [pos_check], 0)
 		pos_check = pos + dir + Vector2i(-1,0)
 		captureCheck = game_state.get_tile_team(pos_check)
 		tiletype = game_state.get_tile_type(pos_check)
 		if captureCheck != playerSide && captureCheck != 0 && tiletype == 0:
-			return_array.append(pos_check)
+			move_icon_helper(pos_check, [pos_check], 0)
 	if piece_type == 3: # knight
 		var signs = [Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
 		var moves = [[Vector2i(1,0),Vector2i(1,0),Vector2i(0,1)],[Vector2i(0,1),Vector2i(1,0),Vector2i(1,0)],
@@ -175,7 +166,7 @@ func place_moves() -> Array[Vector2i]:
 				if valid:
 					var unittype : int = game_state.get_tile_team(pos_check)
 					if unittype != playerSide:
-						return_array.append(pos_check)
+						move_icon_helper(pos_check, [pos_check], 3)
 	if piece_type == 1: # rook
 		var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1)]
 		for d in dir:
@@ -187,7 +178,7 @@ func place_moves() -> Array[Vector2i]:
 					pos_check += d # Do more steps
 					tiletype = game_state.get_tile_type(pos_check)
 				if tiletype == 0:
-					return_array.append(pos_check)
+					move_icon_helper(pos_check, [pos_check], 1)
 	if piece_type == 2: # bishop
 		var dir : Array[Vector2i] = [Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
 		for d in dir:
@@ -199,20 +190,26 @@ func place_moves() -> Array[Vector2i]:
 					pos_check += d # Do more steps
 					tiletype = game_state.get_tile_type(pos_check)
 				if tiletype == 0:
-					return_array.append(pos_check)
+					move_icon_helper(pos_check, [pos_check], 2)
 	if piece_type == 4: # queen
 		var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1),
 			Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
 		for d in dir:
 			var pos_check : Vector2i = pos
+			var changed : Array[Vector2i]
+			changed.append(pos_check)
 			for i in 8:
 				pos_check += d
+				if pos_check.x < 0 or pos_check.x >= 8 or pos_check.y < 0 or pos_check.y >= 8:
+					break
+				changed.append(pos_check)
 				var tiletype : int = game_state.get_tile_type(pos_check)
 				while tiletype == 3:
 					pos_check += d # Do more steps
+					changed.append(pos_check)
 					tiletype = game_state.get_tile_type(pos_check)
 				if tiletype == 0:
-					return_array.append(pos_check)
+					move_icon_helper(pos_check, changed, game_state.custom_tile)
 	if piece_type == 5: # king
 		var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1),
 			Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
@@ -224,9 +221,7 @@ func place_moves() -> Array[Vector2i]:
 				pos_check += d # Do more steps
 				tiletype = game_state.get_tile_type(pos_check)
 			if tiletype == 0:
-				return_array.append(pos_check)
-	
-	return return_array
+				move_icon_helper(pos_check, [pos_check], 0)
 
 func take_piece():
 	in_play = false
