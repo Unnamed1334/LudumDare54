@@ -35,15 +35,10 @@ func get_unit(pos : Vector2i):
 	var idx : int = pos.x + 8 * pos.y
 	return units[idx]
 	
-func get_unit_side(pos : Vector2i):
-	var idx : int = pos.x + 8 * pos.y
-	if units[idx]:
-		return units[idx].playerSide
-	else:
-		return -1
-	
 func get_unit_type(pos : Vector2i):
 	var idx : int = pos.x + 8 * pos.y
+	if pos.x < 0 or pos.y < 0 or pos.x >= 8 or idx >= 64:
+		return -2
 	if units[idx]:
 		return units[idx].piece_type
 	else:

@@ -135,14 +135,14 @@ func place_moves() -> Array[Vector2i]:
 					return_array.append(pos_check)
 		#check capturing
 		pos_check = pos + dir + Vector2i(1,0)
-		var captureCheck : int = game_state.get_unit_side(pos_check)
+		var captureCheck : int = game_state.get_tile_team(pos_check)
 		tiletype = game_state.get_tile_type(pos_check)
-		if captureCheck != playerSide && captureCheck != -1 && tiletype == 0:
+		if captureCheck != playerSide && captureCheck != 0 && tiletype == 0:
 			return_array.append(pos_check)
 		pos_check = pos + dir + Vector2i(-1,0)
-		captureCheck = game_state.get_unit_side(pos_check)
+		captureCheck = game_state.get_tile_team(pos_check)
 		tiletype = game_state.get_tile_type(pos_check)
-		if captureCheck != playerSide && captureCheck != -1 && tiletype == 0:
+		if captureCheck != playerSide && captureCheck != 0 && tiletype == 0:
 			return_array.append(pos_check)
 	if piece_type == 3: # knight
 		var signs = [Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
