@@ -20,7 +20,7 @@ func _process(delta):
 func setup_move(new_unit, new_id, new_affected_tiles : Array[Vector2i], new_terraforming_mode, noMove : bool = false):
 	id = new_id
 	unit = new_unit
-	affected_tiles = new_affected_tiles
+	affected_tiles = new_affected_tiles.duplicate()
 	terraforming_mode = new_terraforming_mode
 	if noMove:
 		$Button.pressed.connect(get_node("/root/GameState").move_unit.bind(unit, unit.pos, affected_tiles, terraforming_mode))

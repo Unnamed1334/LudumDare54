@@ -123,6 +123,8 @@ func deselect_unit():
 
 # Get the places this unit can move.
 func place_moves():
+	if game_state.player_turn != playerSide:
+		return
 	if piece_type == 0: # pawn
 		var dir : Vector2i = Vector2i(0,-1)
 		if playerSide == 2:
@@ -187,7 +189,7 @@ func place_moves():
 				while tiletype == 3:
 					pos_check += d # Do more stepsif game_state.get_tile_type(pos_check) == 1 || game_state.get_unit_type(pos_check) != -1:
 					if game_state.get_tile_type(pos_check - d) == 3:
-						move_icon_helper(pos_check - d, [pos], game_state.custom_tile)
+						move_icon_helper(pos_check - d, [pos], 2)
 					break
 					#stop sliding
 					tiletype = game_state.get_tile_type(pos_check)
@@ -211,7 +213,7 @@ func place_moves():
 					pos_check += d # Do more steps
 					if game_state.get_tile_type(pos_check) == 1 || game_state.get_unit_type(pos_check) != -1:
 						if game_state.get_tile_type(pos_check - d) == 3:
-							move_icon_helper(pos_check - d, [pos], game_state.custom_tile)
+							move_icon_helper(pos_check - d, [pos], 2)
 						break
 						#stop sliding
 					tiletype = game_state.get_tile_type(pos_check)
@@ -230,21 +232,20 @@ func place_moves():
 			changed.append(pos_check)
 			for i in 8:
 				pos_check += d
-				if pos_check.x < 0 or pos_check.x >= 8 or pos_check.y < 0 or pos_check.y >= 8:
+				if pos_check.x < 0 or pos_check.x >= 8 or pos_check.y < 0 or pos_check.y >= 8: # edge of map
 					break
-				if game_state.get_tile_team(pos_check) != 0:
+				if game_state.get_tile_team(pos_check) != 0: # ally
 					if game_state.get_tile_team(pos_check) == playerSide:
 						break
-				changed.append(pos_check)
 				var tiletype : int = game_state.get_tile_type(pos_check)
-				while tiletype == 3:
+				while tiletype == 3: # ice
+					changed.append(pos_check)
 					pos_check += d # Do more steps
 					if game_state.get_tile_type(pos_check) == 1 || game_state.get_unit_type(pos_check) != -1:
 						if game_state.get_tile_type(pos_check - d) == 3:
 							move_icon_helper(pos_check - d, changed, game_state.custom_tile)
 						break
 						#stop sliding
-					changed.append(pos_check)
 					tiletype = game_state.get_tile_type(pos_check)
 				if game_state.get_tile_team(pos_check) != 0:
 					if game_state.get_tile_team(pos_check) != playerSide:
@@ -252,6 +253,7 @@ func place_moves():
 						break
 				if tiletype == 0:
 					move_icon_helper(pos_check, changed, game_state.custom_tile)
+				changed.append(pos_check)
 	if piece_type == 5: # king
 		var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1),
 			Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
@@ -259,11 +261,11 @@ func place_moves():
 			for d in dir:
 				var pos_check : Vector2i = pos
 				pos_check += d
-				if game_state.get_tile_team(pos_check) != 0:
+				if game_state.get_tile_team(pos_check) != 0: # Can't move onto allies
 					if game_state.get_tile_team(pos_check) == playerSide:
 						continue
 				var tiletype : int = game_state.get_tile_type(pos_check)
-				while tiletype == 3:
+				while tiletype == 3: # Slide on ice
 					pos_check += d # Do more steps
 					if game_state.get_tile_type(pos_check) == 1 || game_state.get_tile_team(pos_check) == playerSide:
 						if game_state.get_tile_type(pos_check - d) == 3:

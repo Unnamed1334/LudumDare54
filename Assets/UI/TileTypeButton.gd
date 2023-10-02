@@ -11,5 +11,5 @@ func _process(delta):
 	pass
 
 func change_tile():
-	get_node("/root/GameState").custom_tile = tileType
+	get_node("/root/GameState").change_custom_tile(tileType)
 	

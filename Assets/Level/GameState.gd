@@ -6,7 +6,7 @@ var units : Array[Node]
 
 var pieceList : Array[Node]
 
-var selected : Node
+var selected : Node = null
 
 var ui_objects : Array[Node]
 
@@ -37,6 +37,7 @@ func click_tile(pos:Vector2i):
 		selected = new_unit
 		new_unit.select_unit()
 		board.set_active_unit(new_unit.piece_type)
+		selected = new_unit
 	else:
 		clear_ui()
 		selected = null
@@ -73,8 +74,12 @@ func move_unit(unit: Node, new_pos : Vector2i, affected_tiles : Array[Vector2i],
 	units[new_idx] = unit
 	unit.pos = new_pos
 	
+	if terraforming_mode == 5:
+		terraforming_mode = custom_tile
 	# Handle terraforming
+	print_debug(terraforming_mode)
 	for tile in affected_tiles:
+		print_debug(tile)
 		var tile_idx : int = tile.x+8 * tile.y
 		if tile.x >= 0 and tile.x < 8 and tile.y >= 0 and tile.y < 8:
 			tiles[tile_idx] = terraforming_mode
@@ -95,6 +100,8 @@ func move_unit(unit: Node, new_pos : Vector2i, affected_tiles : Array[Vector2i],
 	
 	# Clear the current UI
 	clear_ui()
+	selected = null
+	custom_tile = 0
 
 # Position unit without updating turn
 func place_unit(unit: Node, new_pos : Vector2i):
@@ -117,16 +124,25 @@ func get_tile_type(pos : Vector2i) -> int:
 		return 4
 	return tiles[idx]
 
+func change_custom_tile(new_tile : int):
+	print_debug(new_tile)
+	print_debug(selected)
+	custom_tile = new_tile
+	if selected != null:
+		var select_fix = selected # clear current buttons
+		clear_ui()
+		selected = select_fix
+		selected.place_moves()
+		board.set_active_unit(selected.piece_type)
+
 func add_ui(element: Node):
 	ui_objects.append(element)
 	pass
 
 func clear_ui():
-	selected = null
 	for o in ui_objects:
 		o.queue_free()
 	ui_objects = []
-	custom_tile = 0
 	
 	board.set_active_unit(-1)
 
