@@ -166,31 +166,44 @@ func place_moves():
 				if valid:
 					var unittype : int = game_state.get_tile_team(pos_check)
 					if unittype != playerSide:
-						move_icon_helper(pos_check, [pos_check], 3)
+						move_icon_helper(pos_check, [pos], 3)
 	if piece_type == 1: # rook
 		var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1)]
 		for d in dir:
 			var pos_check : Vector2i = pos
 			for i in 8:
 				pos_check += d
+				if game_state.get_unit_type(pos_check) != -1:
+					break
 				var tiletype : int = game_state.get_tile_type(pos_check)
 				while tiletype == 3:
-					pos_check += d # Do more steps
+					pos_check += d # Do more stepsif game_state.get_tile_type(pos_check) == 1 || game_state.get_unit_type(pos_check) != -1:
+					if game_state.get_tile_type(pos_check - d) == 3:
+						move_icon_helper(pos_check - d, [pos], game_state.custom_tile)
+					break
+					#stop sliding
 					tiletype = game_state.get_tile_type(pos_check)
 				if tiletype == 0:
-					move_icon_helper(pos_check, [pos_check], 1)
+					move_icon_helper(pos_check, [pos], 1)
 	if piece_type == 2: # bishop
 		var dir : Array[Vector2i] = [Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
 		for d in dir:
 			var pos_check : Vector2i = pos
 			for i in 8:
 				pos_check += d
+				if game_state.get_unit_type(pos_check) != -1:
+					break
 				var tiletype : int = game_state.get_tile_type(pos_check)
 				while tiletype == 3:
 					pos_check += d # Do more steps
+					if game_state.get_tile_type(pos_check) == 1 || game_state.get_unit_type(pos_check) != -1:
+						if game_state.get_tile_type(pos_check - d) == 3:
+							move_icon_helper(pos_check - d, [pos], game_state.custom_tile)
+						break
+						#stop sliding
 					tiletype = game_state.get_tile_type(pos_check)
 				if tiletype == 0:
-					move_icon_helper(pos_check, [pos_check], 2)
+					move_icon_helper(pos_check, [pos], 2)
 	if piece_type == 4: # queen
 		var dir : Array[Vector2i] = [Vector2i(1,0),Vector2i(-1,0),Vector2i(0,1),Vector2i(0,-1),
 			Vector2i(1,1),Vector2i(-1,1),Vector2i(1,-1),Vector2i(-1,-1)]
@@ -202,10 +215,17 @@ func place_moves():
 				pos_check += d
 				if pos_check.x < 0 or pos_check.x >= 8 or pos_check.y < 0 or pos_check.y >= 8:
 					break
+				if game_state.get_unit_type(pos_check) != -1:
+					break
 				changed.append(pos_check)
 				var tiletype : int = game_state.get_tile_type(pos_check)
 				while tiletype == 3:
 					pos_check += d # Do more steps
+					if game_state.get_tile_type(pos_check) == 1 || game_state.get_unit_type(pos_check) != -1:
+						if game_state.get_tile_type(pos_check - d) == 3:
+							move_icon_helper(pos_check - d, changed, game_state.custom_tile)
+						break
+						#stop sliding
 					changed.append(pos_check)
 					tiletype = game_state.get_tile_type(pos_check)
 				if tiletype == 0:
@@ -216,12 +236,20 @@ func place_moves():
 		for d in dir:
 			var pos_check : Vector2i = pos
 			pos_check += d
+			if game_state.get_tile_team(pos_check) != 0:
+				if game_state.get_tile_team(pos_check) == playerSide:
+					break
 			var tiletype : int = game_state.get_tile_type(pos_check)
 			while tiletype == 3:
 				pos_check += d # Do more steps
+				if game_state.get_tile_type(pos_check) == 1 || game_state.get_unit_type(pos_check) != -1:
+					if game_state.get_tile_type(pos_check - d) == 3:
+						move_icon_helper(pos_check - d, [], game_state.custom_tile)
+					break
+					#stop sliding
 				tiletype = game_state.get_tile_type(pos_check)
 			if tiletype == 0:
-				move_icon_helper(pos_check, [pos_check], 0)
+				move_icon_helper(pos_check, [], 0)
 
 func take_piece():
 	in_play = false
