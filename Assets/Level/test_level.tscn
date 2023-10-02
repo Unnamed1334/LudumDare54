@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh4c122ljchcp"]
+[gd_scene load_steps=6 format=3 uid="uid://bh4c122ljchcp"]
 
 [ext_resource type="Script" path="res://Assets/Level/GameBoard.gd" id="1_2dgjc"]
 [ext_resource type="PackedScene" uid="uid://ccgpvhp87ulsf" path="res://Assets/Tiles/blank_tile.tscn" id="2_uhlrx"]
+[ext_resource type="Script" path="res://Assets/UI/TileTypeButton.gd" id="4_gb3pj"]
 [ext_resource type="PackedScene" uid="uid://726vr3vu87rv" path="res://Assets/Pieces/test_pawn.tscn" id="6_7x01b"]
 [ext_resource type="Script" path="res://Assets/Pieces/UIThings.gd" id="8_y883p"]
 
@@ -9,7 +10,7 @@
 layout_mode = 3
 anchors_preset = 0
 
-[node name="BoardTiles" type="GridContainer" parent="."]
+[node name="BoardTiles" type="GridContainer" parent="." node_paths=PackedStringArray("pawn_ui", "rook_ui", "knight_ui", "bishop_ui", "queen_ui", "king_ui")]
 process_priority = -1
 layout_mode = 0
 offset_left = 417.0
@@ -21,6 +22,12 @@ theme_override_constants/v_separation = 48
 columns = 8
 script = ExtResource("1_2dgjc")
 blank_tile = ExtResource("2_uhlrx")
+pawn_ui = NodePath("../UIThings/Pawn")
+rook_ui = NodePath("../UIThings/Rook")
+knight_ui = NodePath("../UIThings/Knight")
+bishop_ui = NodePath("../UIThings/Bishop")
+queen_ui = NodePath("../UIThings/Queen")
+king_ui = NodePath("../UIThings/King")
 
 [node name="BlankTile2" parent="BoardTiles" instance=ExtResource("2_uhlrx")]
 layout_mode = 2
@@ -237,29 +244,176 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="NormalButton" type="Button" parent="UIThings/Queen"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 72.0
+offset_right = 175.0
+offset_bottom = 100.0
+script = ExtResource("4_gb3pj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/Queen/NormalButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Empty
+"
+
+[node name="IceButton" type="Button" parent="UIThings/Queen"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 107.0
+offset_right = 175.0
+offset_bottom = 135.0
+script = ExtResource("4_gb3pj")
+tileType = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/Queen/IceButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Ice"
+
+[node name="PitButton" type="Button" parent="UIThings/Queen"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 178.0
+offset_right = 175.0
+offset_bottom = 206.0
+script = ExtResource("4_gb3pj")
+tileType = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/Queen/PitButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Pit"
+
+[node name="WallButton" type="Button" parent="UIThings/Queen"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 142.0
+offset_right = 175.0
+offset_bottom = 170.0
+script = ExtResource("4_gb3pj")
+tileType = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/Queen/WallButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Wall
+"
+
 [node name="King" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="NormalButton" type="Button" parent="UIThings/King"]
+offset_left = 108.0
+offset_top = 72.0
+offset_right = 175.0
+offset_bottom = 100.0
+script = ExtResource("4_gb3pj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/King/NormalButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Empty
+"
+
+[node name="IceButton" type="Button" parent="UIThings/King"]
+offset_left = 108.0
+offset_top = 107.0
+offset_right = 175.0
+offset_bottom = 135.0
+script = ExtResource("4_gb3pj")
+tileType = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/King/IceButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Ice"
+
+[node name="PitButton" type="Button" parent="UIThings/King"]
+offset_left = 108.0
+offset_top = 178.0
+offset_right = 175.0
+offset_bottom = 206.0
+script = ExtResource("4_gb3pj")
+tileType = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/King/PitButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Pit"
+
+[node name="WallButton" type="Button" parent="UIThings/King"]
+offset_left = 108.0
+offset_top = 142.0
+offset_right = 175.0
+offset_bottom = 170.0
+script = ExtResource("4_gb3pj")
+tileType = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/King/WallButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Wall
+"
+
+[node name="MoveButton" type="Button" parent="UIThings/King"]
+offset_left = 108.0
+offset_top = 40.0
+offset_right = 175.0
+offset_bottom = 68.0
+script = ExtResource("4_gb3pj")
+tileType = -1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIThings/King/MoveButton"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 28.0
+mouse_filter = 1
+text = "Move"
+
 [node name="Rook" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -23.0
+offset_top = 72.0
+offset_right = 17.0
+offset_bottom = 112.0
 
 [node name="Knight" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -16.0
+offset_top = 65.0
+offset_right = 24.0
+offset_bottom = 105.0
 
 [node name="Bishop" type="Control" parent="UIThings"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -24.0
+offset_top = 54.0
+offset_right = 16.0
+offset_bottom = 94.0
 
 [node name="Pieces" type="Control" parent="."]
 anchors_preset = 0

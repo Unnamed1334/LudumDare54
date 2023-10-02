@@ -12,17 +12,12 @@ var player_turn = 1;
 
 var custom_tile : int = 0
 
-var pawn_ui
-var rook_ui
-var knight_ui
-var bishop_ui
-var queen_ui
-var king_ui
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tiles.resize(64)
 	units.resize(64)
+	
+	board = get_node("/root/TestLevel/BoardTiles")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,6 +31,7 @@ func click_tile(pos:Vector2i):
 		clear_ui()
 		selected = new_unit
 		new_unit.select_unit()
+		board.set_active_unit(new_unit.piece_type)
 	else:
 		clear_ui()
 		selected = null
@@ -123,6 +119,8 @@ func clear_ui():
 		o.queue_free()
 	ui_objects = []
 	custom_tile = 0
+	
+	board.set_active_unit(-1)
 
 func get_tile(pos : Vector2i):
 	var idx : int = pos.x + 8 * pos.y

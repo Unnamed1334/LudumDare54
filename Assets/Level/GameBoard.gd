@@ -2,6 +2,13 @@ extends GridContainer
 
 @export var blank_tile : PackedScene
 
+@export var pawn_ui : Node
+@export var rook_ui : Node
+@export var knight_ui : Node
+@export var bishop_ui : Node
+@export var queen_ui : Node
+@export var king_ui : Node
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	columns = 8
@@ -11,6 +18,8 @@ func _ready():
 		c.tile_id = Vector2i(id % columns, floor(id / columns))
 		c.change_tile_type(0)
 		id += 1
+	
+	set_active_unit(-1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,3 +37,24 @@ func get_tile_type(pos : Vector2i) -> int:
 
 func get_tile_pos() -> void:
 	pass
+
+func set_active_unit(type : int):
+	pawn_ui.visible = false
+	rook_ui.visible = false
+	knight_ui.visible = false
+	bishop_ui.visible = false
+	queen_ui.visible = false
+	king_ui.visible = false
+	
+	if type == 0:
+		pawn_ui.visible = true
+	if type == 1:
+		rook_ui.visible = true
+	if type == 2:
+		bishop_ui.visible = true
+	if type == 3:
+		knight_ui.visible = true
+	if type == 4:
+		queen_ui.visible = true
+	if type == 5:
+		king_ui.visible = true
