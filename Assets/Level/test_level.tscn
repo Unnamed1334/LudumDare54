@@ -633,13 +633,13 @@ playerSide = 2
 layout_mode = 1
 piece_type = 2
 playerSide = 2
-pos = Vector2i(1, 0)
+pos = Vector2i(2, 0)
 
 [node name="TestKnight1" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
 piece_type = 3
 playerSide = 2
-pos = Vector2i(2, 0)
+pos = Vector2i(1, 0)
 
 [node name="TestQueen" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
@@ -661,13 +661,13 @@ pos = Vector2i(4, 0)
 layout_mode = 1
 piece_type = 3
 playerSide = 2
-pos = Vector2i(5, 0)
+pos = Vector2i(6, 0)
 
 [node name="TestBishop2" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
 piece_type = 2
 playerSide = 2
-pos = Vector2i(6, 0)
+pos = Vector2i(5, 0)
 
 [node name="TestRook2" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
@@ -737,13 +737,13 @@ pos = Vector2i(0, 7)
 layout_mode = 1
 piece_type = 2
 playerSide = 1
-pos = Vector2i(1, 7)
+pos = Vector2i(2, 7)
 
 [node name="TestKnight3" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
 piece_type = 3
 playerSide = 1
-pos = Vector2i(2, 7)
+pos = Vector2i(1, 7)
 
 [node name="TestQueen2" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
@@ -765,13 +765,13 @@ pos = Vector2i(4, 7)
 layout_mode = 1
 piece_type = 3
 playerSide = 1
-pos = Vector2i(5, 7)
+pos = Vector2i(6, 7)
 
 [node name="TestBishop4" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
 piece_type = 2
 playerSide = 1
-pos = Vector2i(6, 7)
+pos = Vector2i(5, 7)
 
 [node name="TestRook4" parent="Pieces" instance=ExtResource("6_7x01b")]
 layout_mode = 1
@@ -806,47 +806,47 @@ layout_mode = 2
 offset_left = 28.0
 offset_top = -7.0
 offset_right = 428.0
-offset_bottom = 37.0
+offset_bottom = 17.0
 columns = 8
 
 [node name="TestLabel" type="RichTextLabel" parent="TileLabels/Letters"]
-custom_minimum_size = Vector2(44, 44)
+custom_minimum_size = Vector2(44, 24)
 layout_mode = 2
 text = "A
 "
 
 [node name="TestLabel2" type="RichTextLabel" parent="TileLabels/Letters"]
-custom_minimum_size = Vector2(44, 44)
+custom_minimum_size = Vector2(44, 24)
 layout_mode = 2
 text = "B"
 
 [node name="TestLabel3" type="RichTextLabel" parent="TileLabels/Letters"]
-custom_minimum_size = Vector2(44, 44)
+custom_minimum_size = Vector2(44, 24)
 layout_mode = 2
 text = "C"
 
 [node name="TestLabel4" type="RichTextLabel" parent="TileLabels/Letters"]
-custom_minimum_size = Vector2(44, 44)
+custom_minimum_size = Vector2(44, 24)
 layout_mode = 2
 text = "D"
 
 [node name="TestLabel5" type="RichTextLabel" parent="TileLabels/Letters"]
-custom_minimum_size = Vector2(44, 44)
+custom_minimum_size = Vector2(44, 24)
 layout_mode = 2
 text = "E"
 
 [node name="TestLabel6" type="RichTextLabel" parent="TileLabels/Letters"]
-custom_minimum_size = Vector2(44, 44)
+custom_minimum_size = Vector2(44, 24)
 layout_mode = 2
 text = "F"
 
 [node name="TestLabel7" type="RichTextLabel" parent="TileLabels/Letters"]
-custom_minimum_size = Vector2(44, 44)
+custom_minimum_size = Vector2(44, 24)
 layout_mode = 2
 text = "G"
 
 [node name="TestLabel8" type="RichTextLabel" parent="TileLabels/Letters"]
-custom_minimum_size = Vector2(44, 44)
+custom_minimum_size = Vector2(44, 24)
 layout_mode = 2
 text = "H"
 
@@ -854,45 +854,45 @@ text = "H"
 layout_mode = 0
 offset_left = 1.0
 offset_top = 25.0
-offset_right = 49.0
+offset_right = 13.0
 offset_bottom = 425.0
 
 [node name="TestLabel16" type="RichTextLabel" parent="TileLabels/GridContainer"]
-custom_minimum_size = Vector2(48, 44)
+custom_minimum_size = Vector2(12, 44)
 layout_mode = 2
 text = "8"
 
 [node name="TestLabel15" type="RichTextLabel" parent="TileLabels/GridContainer"]
-custom_minimum_size = Vector2(48, 44)
+custom_minimum_size = Vector2(12, 44)
 layout_mode = 2
 text = "7"
 
 [node name="TestLabel14" type="RichTextLabel" parent="TileLabels/GridContainer"]
-custom_minimum_size = Vector2(48, 44)
+custom_minimum_size = Vector2(12, 44)
 layout_mode = 2
 text = "6"
 
 [node name="TestLabel13" type="RichTextLabel" parent="TileLabels/GridContainer"]
-custom_minimum_size = Vector2(48, 44)
+custom_minimum_size = Vector2(12, 44)
 layout_mode = 2
 text = "5"
 
 [node name="TestLabel12" type="RichTextLabel" parent="TileLabels/GridContainer"]
-custom_minimum_size = Vector2(48, 44)
+custom_minimum_size = Vector2(12, 44)
 layout_mode = 2
 text = "4"
 
 [node name="TestLabel11" type="RichTextLabel" parent="TileLabels/GridContainer"]
-custom_minimum_size = Vector2(48, 44)
+custom_minimum_size = Vector2(12, 44)
 layout_mode = 2
 text = "3"
 
 [node name="TestLabel10" type="RichTextLabel" parent="TileLabels/GridContainer"]
-custom_minimum_size = Vector2(48, 44)
+custom_minimum_size = Vector2(12, 44)
 layout_mode = 2
 text = "2"
 
 [node name="TestLabel9" type="RichTextLabel" parent="TileLabels/GridContainer"]
-custom_minimum_size = Vector2(48, 44)
+custom_minimum_size = Vector2(12, 44)
 layout_mode = 2
 text = "1"
